@@ -1,0 +1,92 @@
+
+====java jwt token dependency===========
+
+<dependency>
+    <groupId>com.auth0</groupId>
+    <artifactId>java-jwt</artifactId>
+    <version>3.4.0</version>
+	</dependency>  
+  
+  
+  =====================
+  
+  package jwtTest;
+
+import java.util.Date;
+
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.DecodedJWT;
+
+public class TokenGenerator {
+
+	 Algorithm algorithm = Algorithm.HMAC256("secret");
+	
+	 String token;
+	
+	public String generateToken()
+	{			
+		
+		Long currentTime=System.currentTimeMillis();
+		
+		Date currentDate=new Date(currentTime);
+		Date expiryDate=new Date(currentTime+1000*30*60);
+		
+		
+		System.out.println(currentDate.toString());
+		System.out.println(expiryDate.toString());
+		
+		
+		try {
+		    Algorithm algorithm = Algorithm.HMAC256("secret");
+		token  = JWT.create()
+		        .withIssuer("harman")
+		        .withClaim("role", "admin")
+				.withClaim("valid","true")
+				.withIssuedAt(currentDate)
+				.withExpiresAt(expiryDate)
+		        .sign(algorithm);
+		} catch (JWTCreationException exception){
+		    //Invalid Signing configuration / Couldn't convert Claims.
+		}
+		return token;
+	}
+	
+	public void verifyToken() throws JWTVerificationException
+	{
+		
+		try {
+		   
+			// invalid token :- String token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJpc3MiOiJhdXRoMCJ9.AbIJTDMFc7yUa5MhvcP03nJPyCPzZtQcGEp-zWfOkEE";	
+			String token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2YWxpZCI6InRydWUiLCJyb2xlIjoiYWRtaW4iLCJpc3MiOiJoYXJtYW4iLCJleHAiOjE1MzkwNzE4OTQsImlhdCI6MTUzOTA3MDA5NH0.DrVnEn8esufBXL9jrtHtnvAY4wbpnhNpMsFIgm9-vbw";
+		    JWTVerifier verifier = JWT.require(algorithm)
+		        .withIssuer("harman")
+		        .withClaim("role", "admin")
+		        .build(); //Reusable verifier instance
+		    DecodedJWT jwt = verifier.verify(token);
+		    System.out.println("signature:- "+jwt.getSignature());
+		    System.out.println("issuer:- "+jwt.getIssuer());
+		    System.out.println("issued At:-"+jwt.getIssuedAt());
+		    System.out.println( "expires At :-"+jwt.getExpiresAt());
+		   
+		    
+		} catch (JWTVerificationException exception){
+		    exception.printStackTrace();
+		}
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		
+	TokenGenerator tokenGenerator=new TokenGenerator();
+		
+		System.out.println("generate token is :- "+ tokenGenerator.generateToken());
+		tokenGenerator.verifyToken();
+		
+	}
+
+}
