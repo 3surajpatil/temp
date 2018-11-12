@@ -29,6 +29,32 @@ CloudFront :- it is used to cache the sites/ some data  so that response time wo
 Elastic Block Storage (EBS) :- EC2's are backed by EBS. one EC2 can have multiple EBS. but vice versa is not possible.
 Glacier:- glacier is data backup/ archiving service.
 Snowball :- snowball service is related to data-transfer physically from one AWS Infrastructure to other AWS Infrastructure. snowball is physical device.
+Storage Gateway:- this is placed in between application server and database server . it acts as a middleware.
+	it takes snapshot of database in some time interval. and it will identify if there is any failure of database server and
+	restore the database snapshot.				
+
+AWS Database Services.
+------------------------
+1) RDS:- Relational Database Management System. we can manage relational databases like oracle , mysql etc.
+2) Aurora :- amazon aurora is again mysql based RDBMS service . that means it is same as mysql but 5 times faster than mysql . 
+			 mysql code will work exactly same in this service.
+3) DynamoDB :- it is non RDBMS service.it will increase database size automatically , no manual intervention. 
+			as more data comes in. this is for unstructured data. i.e. non RDBMS.
+			
+4) Elastic Cache :- it identifies frequent queries and cache data. queries will be served from here insted of hitting database frequently.
+5) Redshift :- this is data analysis tool. here data can be feeded from RDS & DynamoDB. 
+
+AWS Networking Services.
+--------------------------
+1) VPC :- virtual private cloud. we can put all our resources in VPC so that they can communicate with each other.
+2) Direct Connect :- if we want more bandwidth than our regular internet. then we can use this service and opt one lease line and have more bandwidth.
+3) Route53 :- this is DNS service. we can provide name or alias and ip address to the AWS instance.
+
+
+AWS Management Services.
+---------------------------
+1) CloudWatch :- we can set alarms and monitor our instances.
+
 
 
  				
