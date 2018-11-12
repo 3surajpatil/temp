@@ -1,0 +1,34 @@
+AWS Notes
+===========
+
+Reference :- https://www.youtube.com/watch?v=IT1X42D1KeA&list=PL9ooVrP1hQOFWxRJcGdCot7AgJu29SVV3
+
+
+What is Cloud Computing?
+--> using remote server on the internet to store, process data insted of putting on local machine.
+
+AWS Compute Services.
+-----------------------
+
+EC2:- ELASTIC COMPUTE CLOUD (we will get blank server. and we would need to install from o.s. to rest of required appilcations.)
+Lambda:- this is just for background processing. e.g. image compression. etc based on the events triggered. we can define triggers.
+Elastic Beans:- this is automatic version of EC2, which provides ready environment where we can deploy our code directly . 
+				this allows us to select environment required like php/java then aws will create readymade environment 
+				and we will be ready to deploy our application.
+Elastic Load Balencer:- this is used to distribute the load amongst the different instances of EC2/ Elastic Beans				
+
+Autoscaling :- We can Auto scale our instances when work load is huge. Autoscaling works with Elastic Load Balencer.
+				
+				
+
+AWS Storage Services.
+------------------------
+
+s3:- Simple Storage Service. it is object oriented file storage system.
+CloudFront :- it is used to cache the sites/ some data  so that response time would be less.
+Elastic Block Storage (EBS) :- EC2's are backed by EBS. one EC2 can have multiple EBS. but vice versa is not possible.
+Glacier:- glacier is data backup/ archiving service.
+Snowball :- snowball service is related to data-transfer physically from one AWS Infrastructure to other AWS Infrastructure. snowball is physical device.
+
+
+ 				
