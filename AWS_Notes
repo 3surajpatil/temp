@@ -54,6 +54,30 @@ AWS Networking Services.
 AWS Management Services.
 ---------------------------
 1) CloudWatch :- we can set alarms and monitor our instances.
+2) CloudFormation :- we can use this service as a template for creating new could infrastructure.e.g  we can copy our existing could and make new one.
+3) CloudTrail:- it is a logging service. stores logs in s3 file systems.
+4) CLI :- it is replacement to aws GUI.
+5) OpsWorks :- configuration management tool.
+6) TrustedAdvisor :- advises to create better aws account and reduce cost.
+
+
+AWS Security Services.
+-----------------------------
+1) IAM :- identification and Authentication tool. we can create multiple accounts as user or admin.
+2) KMS :- this service helps creating public and private keys.
+
+
+AWS Application Services.
+------------------------------
+
+1) SES :- email services.
+2) SQS :- simple queue service. it allows to create tasks and those will be processed by different servers with listed priority as FIFO.
+3) SNS :- simple notification service. it allows to send notification. e.g. sending notification to SQS after processing one task.
+
+
+AWS Pricing.
+------------------
+known intervals for instance and resources could lead in cost reduction.
 
 
 
