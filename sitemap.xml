@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>http://www.tcampus.in/</loc>
+  <lastmod>2018-12-05T05:33:41+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://www.tcampus.in/core_java/Core-Java.html</loc>
+  <lastmod>2018-12-05T05:32:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.tcampus.in/core_java/JDBC.html</loc>
+  <lastmod>2018-12-05T05:32:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.tcampus.in/core_java/Design-Patterns.html</loc>
+  <lastmod>2018-12-05T05:32:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.tcampus.in/advance_Java/Servlet-JSP.html</loc>
+  <lastmod>2018-12-05T05:31:45+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.tcampus.in/hibernate/hibernate.html</loc>
+  <lastmod>2018-12-05T05:32:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.tcampus.in/spring/Spring.html</loc>
+  <lastmod>2018-12-05T05:33:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.tcampus.in/core_java/Core-Java-Interview-Questions.html</loc>
+  <lastmod>2018-09-19T16:22:30+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
