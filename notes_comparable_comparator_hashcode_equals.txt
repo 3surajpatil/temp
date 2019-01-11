@@ -1,0 +1,152 @@
+
+EMPLOYEE.JAVA
+=======================================================
+package test;
+
+import java.util.Comparator;
+
+public class Employee implements Comparable{
+
+	int id ;
+	String name;
+	
+	public Employee(int id,String name)
+	{
+		this.id=id;
+		this.name=name;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+
+	@Override
+	public int compareTo(Object obj1) {
+		
+		Employee obj=(Employee)obj1;
+		
+		
+		if(this.id>obj.id)
+		{
+			return -1;
+		}
+		else if(obj.id>this.id)
+		{
+			return 1;
+		}
+		else{
+			return 0;
+		}
+		
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employee other = (Employee) obj;
+		if (id != other.id)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + "]";
+	}
+
+}
+
+
+=======================================================
+
+Employee Comparator id comparing implementation.
+
+package test;
+
+import java.util.Comparator;
+
+public class EmployeeComparator implements Comparator{
+
+	@Override
+	public int compare(Object obj1, Object obj2) {
+	
+		Employee e1=(Employee)obj1;
+		Employee e2=(Employee)obj2;
+		
+		return e1.id -e2.id;
+
+	}
+		
+}
+
+
+==========================================================
+EmployeeSorting example..
+
+package test;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class EmployeeSorting {
+
+	public static void main(String[] args) {
+	List<Employee> employeeList=new ArrayList<Employee>();
+	
+	
+	Employee e1=new Employee(5,"suraj");
+	Employee e2=new Employee(8,"vasim");
+	Employee e3=new Employee(3,"supath");
+	
+	employeeList.add(e1);   // 
+	employeeList.add(e2);   // 4 - 2 = 2
+	employeeList.add(e3);   // 2 -1 = 1
+	
+	//Collections.sort(employeeList); // uses comparable interface.
+	Collections.sort(employeeList,new EmployeeComparator()); // uses comparator interface.
+	for(Employee e:employeeList)
+	{
+		System.out.println(e.id);
+	}
+	
+	
+	if(employeeList instanceof Employee)
+	{
+		System.out.println("true///!");
+	}
+	
+	
+}
+
+}
