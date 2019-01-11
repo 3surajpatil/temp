@@ -1,0 +1,188 @@
+Java 8 Lambda Expressions
+=============================
+
+Reference :- http://www.java2novice.com/java-8/lambda-expression/
+
+---> Lambda expression is an anonymous function with out any declarations.
+
+---> Syntax :- (arguments) -> {body}
+
+--> here arguments can be of any type simmiler as we pass to any method. 
+e.g. 1) (i)-> {System.out.println(i);}
+e.g. 2) (int i) {System.out.println(i);}
+e.g. 3) ()-> {System.out.println("NoArgs");}
+e.g. 4)	(int i,int j)-> {System.out.println("sum:- "+i+j);}
+e.g. 5) i-> {System.out.println(i);}
+
+--> body can contain any number of statements.
+
+e.g. 1) (int i, int j) ->  return i+j
+e.g. 2) (int i, int j) -> {
+            int i = i+j;
+            System.out.println(i);
+		}
+
+--> in body if you don't specify return type , void will be default return type.
+
+---> A lambda expression is an instance of a functional interface
+
+Q) What is Functional Interface ?
+
+---> An interface with only one abstract method is called functional interface
+in Java 8, you can define functional interfaces with @FunctionalInterface annotation to notify java compiler.
+Marker Interface is one which is having no/zero abstract method in it . 
+
+--> Java API has many single method implementations (i.e. functional interfaces ) like Comparator, Runnable, Callable,Consumer (argument of forEach() method.) etc. 
+    Prior to Java-8, you can implement and initiaize them using anynomus class syntax.
+	
+-->	Example usage of lambda Expression for Comparator.
+
+
+Person.java
+------------
+package test;
+public class Person {
+
+	int id;
+	String name;
+	//Convinience constructor.	
+	public Person(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+	//default constructor.
+	public Person() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Person [id=" + id + ", name=" + name + "]";
+	}
+	//getters and setters.	
+}
+
+	
+package test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class TestClass {
+
+	public static void main(String[] args) {
+	
+			Person p=new Person(1,"suraj");
+			Person p2=new Person(3,"Pankaj");
+			Person p1=new Person (2,"Chetan");
+			List<Person> l=new ArrayList();
+			l.add(p); l.add(p2); l.add(p1);						
+			System.out.println(l.toString());
+			
+			//Lambda expression used here.	
+			Comparator employeeIdComparator=(Object obj1,Object obj2)->{
+				
+				Person firstPerson=(Person)obj1;
+				Person secondPerson=(Person)obj2;
+				
+				if(firstPerson.getId()>secondPerson.getId()) {
+					return 1;
+				}
+				else if(firstPerson.getId()<secondPerson.getId()) {
+					return -1;
+				}
+				else {
+					return 0;
+				}																								
+			};					
+			Collections.sort(l, employeeIdComparator);			
+			System.out.println(l.toString());			
+	}
+}
+Output :- 
+==========
+[Person [id=1, name=suraj], Person [id=3, name=Pankaj], Person [id=2, name=Chetan]]
+[Person [id=1, name=suraj], Person [id=2, name=Chetan], Person [id=3, name=Pankaj]]
+
+
+
+Method References
+==================
+---> insted of writing a lambda expression and call a method, we can use Method reference.
+---> this is short hand way of writing lambda expression.
+---> it is implicit way of lambda expression. compiler will write lambda expression for us when we use method reference.
+
+What is need of method reference ? :- this is short hand way of writing lambda expression.
+
+There are three types of Method Reference 
+
+---> 1) Static method reference.
+---> 2) instance method reference.
+---> 3) constructor method reference. 
+
+
+---> Operator used for method reference :: (method reference operator) 
+
+---> Consider below Example. 
+in same example we can observe instance method reference by making printMessage() method of HelloMessagePrinter class  as instance.
+and uncommenting the code with comment  instance method reference
+--> thing to note here is we can do same thing with help of lambda expression.
+
+
+
+@FunctionalInterface
+interface MessagePrinter {		
+	void printMessage();
+}
+
+class HelloMessagePrinter {
+
+	public static void printMessage(){
+		System.out.println("Hello World...!");
+	}
+	
+}
+
+public class Executor {
+	
+	public static void main(String[] args) {		
+
+		//static method reference.
+		MessagePrinter mp= HelloMessagePrinter::printMessage;
+		mp.printMessage();
+		
+		
+		// instance method reference
+		/*HelloMessagePrinter hmp=new HelloMessagePrinter();
+		MessagePrinter mp= hmp::printMessage;
+		mp.printMessage();*/
+						
+	}
+
+}
+
+
+
+Default Methods
+================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
