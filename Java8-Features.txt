@@ -316,6 +316,126 @@ Streams in java8 (java.util.stream.Stream)
 	Stream.of("bus", "car", "bicycle", "flight", "train").limit(3).forEach(System.out::println);
 
 	
+Date and Time API  (java.time package)
+-------------------
+
+--> we have following classes for date and time introduced in java 1.8.
+-->
+1) LocalDateTime :- This will query the system clock in the defaulttime-zone to obtain the current date-time. 
+
+Static Methods 
+
+i) now()   
+ii)of(year, month, dayOfMonth, hour, minute)
+
+Example :- 
+
+		LocalDateTime ldt=LocalDateTime.now();
+		or 
+		LocalDateTime ldt=LocalDateTime.of(2019, Month.JANUARY, 16, 13, 13);
+				
+		System.out.println(ldt.minusDays(20)); // substracts given long number of days and returns date.
+ 		System.out.println(ldt.plusDays(28));	// adds long number of days and returns date.	
+		System.out.println(ldt.toString());
+		System.out.println(ldt.getDayOfMonth());
+		System.out.println(ldt.getDayOfYear());
+		System.out.println(ldt.getYear());
+		System.out.println(ldt.getMonth());
+		System.out.println(ldt.getHour());
+		System.out.println(ldt.getMinute());
+		System.out.println(ldt.getSecond());
+		System.out.println(ldt.getNano());
+		System.out.println(ldt.toLocalDate()); //2019-01-16  :- returns LocalDate object
+		System.out.println(ldt.toLocalTime()); //13:25:02.011 :- returns LocalTime object
+
+2) ZonedDateTime :- this will contain zone offset along with date.
+
+		ZonedDateTime zdt=ZonedDateTime.now();		
+		System.out.println(zdt.toString());	 //output :- 2019-01-16T13:26:41.283+05:30[Asia/Calcutta]
+
+		
+		ZoneId zid=ZoneId.systemDefault();
+		ZonedDateTime.of(LocalDateTime.now(), zid);		
+		System.out.println(zdt.toString());
+		
+				
+3) LocalDate :-  	LocalDate currentDate=LocalDate.now(); //2019-01-16
+4) LocalTime :- LocalTime currentTime=LocalTime.now();  //15:01:30.820
+5) Instant :- introduced Instant class to represent machine readable time formats.
+
+		Instant stringToInstant= Instant.parse("2019-01-16T14:44:35Z"); // observe the string format is with 'T' & 'Z' in it.
+        System.out.println(stringToInstant.toString());
+		
+6) Period :- 
+
+		Period.of(years, months, days);
+		Period.ofDays(days);
+		Period.ofMonths(months);
+		Period.ofWeeks(weeks);
+		Period.ofYears(years);
+		
+		//to calculate difference between dates.
+		LocalDate currentDate=LocalDate.now();
+		System.out.println(currentDate);
+
+		LocalDate tenDaysBefore=currentDate.minus(Period.ofDays(10)); // 10 days before date
+		LocalDate twoMonthsAfter=currentDate.plus(Period.ofMonths(2)); // two months after.
+		
+		Period deffrencBetweenDates=Period.between(tenDaysBefore, twoMonthsAfter);
+		System.out.println("Years :- "+deffrencBetweenDates.getYears()+" Months:- "+deffrencBetweenDates.getMonths()+" Days:- "+deffrencBetweenDates.getDays());
+		
+
+7) Duration :- As we can calculate difference of dates with help of Period, we can calculate diffrence of time with help of Duration.
+
+		LocalTime currentTime=LocalTime.now();
+		
+		LocalTime after2_HoursAnd30_MinutesAnd15_Seconds=currentTime.plus(Duration.ofHours(2)).plus(Duration.ofMinutes(30)).plusSeconds(15);
+		System.out.println(after2_HoursAnd30_MinutesAnd15_Seconds.toString()); //17:47:47.367
+		
+
+
+
+Q) calculating difference between execution in seconds and miliseconds.
+		
+		Long beforeStartingExecution=Instant.now().getEpochSecond();
+		//calling business logic method.
+		someBusinessLogic();		
+		Long afterExecutionFinished=Instant.now().getEpochSecond();		
+		Long difference= afterExecutionFinished-beforeStartingExecution;		
+		System.out.println("executionTime in seconds :- "+difference);
+		
+		Long beforeStart=Instant.now().toEpochMilli();
+		someBusinessLogic();
+		Long afterComplete=Instant.now().toEpochMilli();
+		Long diff=afterComplete-beforeStart;
+		System.out.println("executionTime in miliSeconds :- "+diff);
+
+		public static void someBusinessLogic(){
+		
+		try {
+			TimeUnit.SECONDS.sleep(3);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+
+Q)Converting string to date ?
+
+		// means string date is in "yyyy-mm-dd" format
+        String dateStr = "2015-11-18";
+        LocalDate dtObj = LocalDate.parse(dateStr);
+        System.out.println("Date object: "+dtObj);
+ 
+        // convert it using formatter
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate fdtObj = LocalDate.parse("18/11/2015", dateFormatter);
+        System.out.println("Date object: "+fdtObj);
+
+
+
+
 
 
 
