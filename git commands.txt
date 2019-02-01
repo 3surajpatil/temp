@@ -1,0 +1,85 @@
+D:\git-repos>git --version
+git version 2.16.2.windows.1
+
+D:\git-repos>git config --global user.name "suraj patil"
+
+D:\git-repos>git config --global user.email "3surajpatil@gmail.com"
+
+D:\git-repos>git config -list
+error: did you mean `--list` (with two dashes ?)
+
+D:\git-repos>git config --list
+
+--> to start tracking your git directory(your code) locally initiate this command and it will create a .git file.
+
+> git clone url_of_your_repo.(copy url from repo gui.)  . (your destination locally.)
+
+>git init 
+
+
+.gitignore  --> file is file which we want git to ignore.
+
+.gitignore (file)
+------------
+
+*.project
+*.class
+
+
+> git status  ---> this will list the changes made in files .
+
+> git add file_name   or git add -A  (to add all files in staging area.)
+> git reset filename or git reset (to remove all files from staging area.)---> to remove all files from staging area.
+
+now make changes to files or do your work . and then add files changed by 
+
+> git add -A / filename.
+> git status  (to list out files in staging.)
+> git commit -m "message to commit."
+
+
+> git log  ---> this will give you the commit id's 
+
+
+
+D:\git-repos\tcampus>git remote -v   (lists the directories)
+origin  https://github.com/3surajpatil/tcampus.git (fetch)
+origin  https://github.com/3surajpatil/tcampus.git (push)
+
+
+
+D:\git-repos\tcampus>git branch -a   (lists the local and remote branches.)
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/updates
+
+
+ > git diff  ----> this will show differences to files maded.
+
+add changed files to stage by 
+> git add -A
+
+
+
+> git pull  (before commiting just try to get the changes made by others in that repository.)
+
+
+D:\git-repos\tcampus>git pull
+Already up to date.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
