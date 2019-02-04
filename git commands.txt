@@ -15,14 +15,14 @@ D:\git-repos>git config --list
 > git init 
 
 
-> .gitignore  --> file is file which we want git to ignore.
+> .gitignore  --> create this file with your favourate text editor . this file lists files which we want git to ignore from staging and commits..
 
 .gitignore (file)
 ------------
 
 *.project
 *.class
-
+/dir_name
 
 > git status  ---> this will list the changes made in files .
 
