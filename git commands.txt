@@ -57,7 +57,7 @@ D:\git-repos\tcampus>git branch -a   (lists the local and remote branches.)
 >  git checkout updates  (to switch to updates branch.)
 
 
- > git diff  ----> this will show differences to files maded.
+> git diff  ----> this will show differences to files maded in current branch..
 
 add changed files to stage by 
 > git add -A
@@ -82,22 +82,16 @@ D:\git-repos\tcampus>git branch -a
   remotes/origin/updates
 
 
-
-to create branch 
-
-> git branch branch_name  (this will create a new branch.)
-
-
 D:\git-repos\tcampus>git checkout updates (to switch to new branch.)
 Switched to a new branch 'updates'
 Branch 'updates' set up to track remote branch 'updates' from 'origin'.
 
 makes changes and add to stage. then 
 
-git push -u origin updates  // this will add new changes to the updates branch.
+> git push -u origin updates  // this will add new changes to the updates branch.
 
 
-
+**************************************** adding this line to test the push functionality.......!
 
 
 D:\git-repos\tcampus>git branch --merged   (this will show mearged branches.)
@@ -117,7 +111,7 @@ D:\git-repos\tcampus>git branch --merged
 D:\git-repos\tcampus>git branch -d updates
 Deleted branch updates (was 0faee3c).
 
-D:\git-repos\tcampus>git push origin --delete updates
+D:\git-repos\tcampus>git push origin --delete updates  
 To https://github.com/3surajpatil/tcampus.git
  - [deleted]         updates
 
