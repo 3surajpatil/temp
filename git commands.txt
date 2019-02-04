@@ -62,7 +62,7 @@ D:\git-repos\tcampus>git branch -a   (lists the local and remote branches.)
 add changed files to stage by 
 > git add -A
 
-
+#************adding test changes..
 
 > git pull  (before commiting just try to get the changes made by others in that repository.)
 
