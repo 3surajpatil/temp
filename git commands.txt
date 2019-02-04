@@ -52,6 +52,10 @@ D:\git-repos\tcampus>git branch -a   (lists the local and remote branches.)
   remotes/origin/master
   remotes/origin/updates
 
+> git branch new_branch name  (this will create a new branch.)
+
+>  git checkout updates  (to switch to updates branch.)
+
 
  > git diff  ----> this will show differences to files maded.
 
