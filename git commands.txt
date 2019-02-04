@@ -1,23 +1,21 @@
 D:\git-repos>git --version
 git version 2.16.2.windows.1
 
+#for first time / one time operation.
 D:\git-repos>git config --global user.name "suraj patil"
 
 D:\git-repos>git config --global user.email "3surajpatil@gmail.com"
 
-D:\git-repos>git config -list
-error: did you mean `--list` (with two dashes ?)
-
 D:\git-repos>git config --list
 
 --> to start tracking your git directory(your code) locally initiate this command and it will create a .git file.
-
+(if you have created this repository from github.com gui. you can clone it directly.)
 > git clone url_of_your_repo.(copy url from repo gui.)  . (your destination locally.)
+--> (if you want to start a new project then create a new folder and just initiate this command.)
+> git init 
 
->git init 
 
-
-.gitignore  --> file is file which we want git to ignore.
+> .gitignore  --> file is file which we want git to ignore.
 
 .gitignore (file)
 ------------
@@ -31,7 +29,7 @@ D:\git-repos>git config --list
 > git add file_name   or git add -A  (to add all files in staging area.)
 > git reset filename or git reset (to remove all files from staging area.)---> to remove all files from staging area.
 
-now make changes to files or do your work . and then add files changed by 
+now make changes to files or add new features and  then add files changed by 
 
 > git add -A / filename.
 > git status  (to list out files in staging.)
@@ -121,7 +119,13 @@ To https://github.com/3surajpatil/tcampus.git
 
 D:\git-repos\tcampus>
 
+=============================================================================
 
+> git init
+> git add
+> git commit
+> git push
+> git clone
 
 
 
