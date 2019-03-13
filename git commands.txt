@@ -33,6 +33,7 @@ D:\git-repos>git config --global user.name "suraj patil"
 > git status    (will show things that are there in stages.)
 > git commit -m "first commit"
 
+
 > git log  ---> this will give you the commit id's 
 > $ git remote -v    (this will be blank if there is no remote repository added yet.)
 
@@ -45,10 +46,18 @@ origin  https://github.com/3surajpatil/practice.git (fetch)
 origin  https://github.com/3surajpatil/practice.git (push)
 
 
+
 --> now we have remote repository so push your content to remote repository.
 (this will push content from local master branch to remote master branch. try refreshing on your gui and look if files are pushed successfully..!)
 >  git push -u origin master  
 
+---> now we are ready to create a remote repository via gui/ browser and copy the remote add url. 
+
+
+> git remote add origin https://github.com/3surajpatil/practice.git
+> $ git remote -v
+origin  https://github.com/3surajpatil/practice.git (fetch)
+origin  https://github.com/3surajpatil/practice.git (push)
 
 ---> now we will create branch of the master repository locally with name updates.
 
@@ -103,3 +112,245 @@ origin  https://github.com/3surajpatil/practice.git (push)
 
 > git clone  (to clone existing repository.)
 
+few more commands...
+
+
+
+https://github.com/3surajpatil/practice.git
+
+> HEAD points to latest commit object.
+
+#to view the contents of the commit.
+> git show <first_6_characters_of_commit_id>
+#if we not provide commit id then it will point to HEAD by default 
+> git show 
+
+#command to delete the file from your working tree and record the deletion of the file in the staging area at same time.
+> git rm fileName
+
+
+
+# amend the last commit message. just in case if something was not correct in previous commit message.
+> git commit --amend -m "More changes - now correct"
+
+
+--> now we have remote repository so push your content to remote repository.
+(this will push content from local master branch to remote master branch. try refreshing on your gui and look if files are pushed successfully..!)
+>  git push -u origin master  
+
+
+---> now we will create branch of the master repository locally with name updates.
+
+
+git bare repository
+=======================
+
+--> a normal git repository is one which will have .git hidden directory in it.
+--> this .git hidden directory will contain your HEAD, branches and rest of stuff.
+--> along with .git directory you can put your files parallay. i.e. your working files will be available paralaly to .git i.e. called working tree.
+--> A remote repository on a server typically does not require a working tree. 
+--> bare repository is one which is not having working tree. it will just have content within .git directory.
+--> remote repositories should be bare repositories because we don't need working tree there directly.
+--> we copy remote repositories and work on them locally.
+
+
+# creating git bare repository.
+
+
+>git branch -a    (this will list out branches locally avilable.)
+* master
+  remotes/origin/master
+ 
+> git branch updates  (this will create a branch with name updates locally. if you see on gui there will be only 1 branch i.e. master as of now..)
+  
+> git checkout updates  (to switch to updates branch.)
+  
+---> once new branch is created and switched,  add changes to index.html file.
+
+> git diff  (this will show differences to files maded in current local branch..)
+
+---> this means you are updating contents in updates branch. whereas the content in the master branch remains same.    
+ 
+> git pull  (before commiting just try to get the changes made by others in that repository.) you will get no origin type error. no worries.
+ 
+---> now add changed files to stage mode.
+> git status
+> git add -A  
+> git status
+> git commit -m "adding <marquee> in middle content"   //just adding some content
+   
+  
+---> git push -u origin updates  (this will create an updates branch remotely and add the local 'updates' reporitory content to remote 'updates' repository )
+--->now lets go back to master branch and merge the two repositories (master and updates).  
+  
+--> git checkout master   (switching to master )
+  
+>git branch --merged    (this will show all the branches that are merged with current branch)
+* master
+ 
+> git merge updates  (merging updates branch with master branch. make sure you commit all changes in updates branch before merging.)
+  
+  
+----> wait a moment , till now you just have merged content from local updates to local master branches.
+----> its time to commit local master repository changes to remote master repo and delete the updates local branch.
+----> before committing to master branch , pulling content from master branch.
+ 
+> git pull origin master  
+
+> git push origin master    ( simmilerly if you want to push updates branch :- git push origin updates)
+
+---> now delete remote updated repository.
+
+> git push origin --delete updates
+
+==========================done...
+
+> git init --bare
+
+remote repositories
+====================
+--> If you clone a repository, Git implicitly creates a remote named origin by default.
+--> The origin remote links back to the cloned repository.
+--> If you create a Git repository from scratch with the git init command, the origin remote is not created automatically
+--> You can push changes to this repository via git push as Git uses origin as default.
+-->You can add more remotes via the 
+> git remote add [name_for_remote] [URL_to_Git_repo]
+
+# rename the existing remote repository from
+# name_1 to name_2
+> git remote rename name_1 name_2
+
+#to push content to remote repository .
+# as origin points to remote repository , it will push contents to remote repository.
+> git push origin
+
+# show details about the remotes
+git remote -v
+
+
+--> You can push the changes in a branch to a remote repository by specifying the target branch. 
+--> This creates the target branch in the remote repository if it does not yet exist.
+
+# push current branch to a branch called "testing" to remote repository. provided testing branch should be available.
+> git push origin testing
+
+
+reference :- http://www.vogella.com/tutorials/Git/article.html#git_tooling
+
+section :- 12.1. Create a bare Git repository via the clone operation
+
+Git Branches
+==============
+--> Git allows you to create branches, i.e. named pointers to commits. 
+
+--> If you decide to work on a branch, you checkout this branch. 
+	This means that Git populates the working tree with the version of the files from the commit 
+	to which the branch points and moves the HEAD pointer to the new branch.
+	
+--> HEAD is a symbolic reference usually pointing to the branch which is currently checked out.
+
+#to list all local branches
+git branch
+
+#to list all branches including remote branches
+git branch -a	
+
+# create branch and switch to it
+git checkout -b bugreport12
+
+# rename branch
+git branch -m [old_name] [new_name]
+
+# delete branch testing
+git branch -d testing
+# force delete testing
+git branch -D testing
+
+# push anewbranch to the master in the origin
+git push origin anewbranch:master
+
+
+# get the changes into your local master
+git checkout master  (switch to master local branch)
+git pull
+
+
+git tags
+=============
+
+--> Git has the option to tag a commit in the repository history so that you find it easier at a later point in time.
+
+
+#You can list the available tags via the following command:
+git tag
+
+# create lightweight tag
+git tag 1.7.1
+
+# see the tag
+git show 1.7.1
+
+# to create annotated tag.
+git tag 1.6.1 -m 'Release 1.6.1'
+
+
+# we can checkout from tag
+git checkout <tag_name>
+
+
+
+---> By default the git push command does not transfer tags to remote repositories. 
+	You explicitly have to push the tag with the following command.
+	
+# push a tag or branch called tagname
+git push origin [tagname]
+
+# push all tags
+git push --tags
+
+# delete tag locally
+git tag -d 1.7.0
+
+#git shortlog The git shortlog command summarizes the git log output. 
+#It groups all commits by author and includes the first line of the commit message.
+$ git shortlog
+suraj patil (11):
+      first commit
+      adding <marquee> in middle content
+      added marquee to header
+      renaming file from template.html to index.html
+      some changes
+      A change
+      created test01
+      added new line
+      added test01 in master branch
+      added another line
+      Merge branch 'master' of https://github.com/3surajpatil/practice after resolving conflict.
+
+# see the commits by the author "Lars Vogel"
+git shortlog --author="Lars Vogel"
+
+# to remove all untracked files i.e. files not in staging area.
+git clean -n
+
+
+
+--> what if you have added a file in staging area that was not necessary or you 
+--> do not want that staged file to go to the commit.
+
+# remove test02 from the staging area
+git reset file_name
+
+# if you don't want changes that was there in perticuler commit , revert a commit
+git revert commit_id
+
+# to delete a remote branch.
+git push [remote] -d / --delete branch_name
+$ git push origin -d testing
+To https://github.com/3surajpatil/practice.git
+ - [deleted]         testing
+
+
+> git clone  (to clone existing repository.)
+
+	

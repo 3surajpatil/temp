@@ -1,0 +1,225 @@
+
+reference :- https://www.guru99.com/node-js-modules-create-publish.html
+
+What is Node.js?
+Node.js is an open-source, cross-platform runtime environment used for development of server-side web applications. 
+Node.js applications are written in JavaScript and can be run on a wide variety of operating systems.
+
+--> Node.js is best to use for applications which have small processes and requires less cpu time.
+--> Node.js should not be used for applications which need long time to process data. because of which it needs dedicated CPU time for long.
+--> Node is structured to be single threaded. If any application is required to carry out some long running calculations in the background. 
+	So if the server is doing some calculation, it won't be able to process any other requests. 
+	As discussed above, Node.js is best when processing needs less dedicated CPU time
+--> Node.js is abstraction for google chrome's V8 javascript engine.
+--> it can be used in Game servers,Chat applications,Advertisement servers,Streaming servers etc.
+
+What are modules in Node.js?
+--> A module in Node.js is a logical encapsulation of code in a single unit. 
+-->There are many readymade modules available in the market which can be used within Node js.
+
+1) Express framework – Express is a minimal and flexible Node js web application framework that provides 
+a robust set of features for the web and Mobile applications.
+2) Socket.io - Socket.IO enables real-time bidirectional event-based communication. This module is good for creation of chatting based applications.
+3) Jade - Jade is a high-performance template engine and implemented with JavaScript for node and browsers.
+4) MongoDB - The MongoDB Node.js driver is the officially supported node.js driver for MongoDB.
+5) Restify - restify is a lightweight framework, similar to express for building REST APIs
+6) Bluebird - Bluebird is a fully featured promise library with focus on innovative features and performance
+
+
+---> In order to use modules in a Node.js application, they first need to be installed using the Node package manager.
+
+
+
+What is function expression ?
+---> 
+normal javascript function looks like 
+
+function sayHi(){
+console.log('hi...!');
+}
+sayHi(); //function will be called.
+
+function expression looks like 
+var sayBye=function(){
+console.log('Bye...!');
+}
+
+sayBye();
+
+reference := https://www.youtube.com/playlist?list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp
+============================================================================================
+
+--->one function cal also be passed as a parameter to another function.
+// declaring first function.
+var sayBye=function(){
+console.log('Bye...!');
+}
+
+//declaring second function with one argument..and executing that argument function.
+function fun(functionAsParam){
+    functionAsParam();
+}
+//passing 'sayBye' function as argument to function 'fun'.
+fun(sayBye);
+
+
+
+creating a module and importing in another module.
+=====================================================
+
+lets say we want to export some function outside of file.
+
+counter.js
+----------
+
+/*
+creating a counter function to calculate the elements of array.
+*/
+
+var count=function(arr){
+console.log('total elements in array are:='+arr.length);
+}
+
+//exporting count function.
+module.exports=count;
+
+
+app.js.
+--------
+//importing counter.
+var count=require('./counter');
+
+//create the array of elements.
+var arr=['suraj','supath','shahrukh','pankaj'];
+
+//call the function.
+count(arr);
+
+
+
+What is template string?
+--> normal string is what we specify in '' (single quotes or double quotes in javascript.)
+--> template string is what we specify in `` 
+--> benifit of template string is we can use expression within template string. 
+	e.g. normal string :- 'addition of two no is'+a+b
+		template string :- `addition of two no is ${a+b}`
+	
+
+How to export multiple elements of a module ?
+--> in above application we exported count from counter.js.
+--> if we have multiple functions or variables that we want to export then there could be following approaches.
+
+approach 1 )  mathOperation.js
+--------------
+
+
+	var count=function(arr){
+console.log('total elements in array are:='+arr.length);
+}
+
+
+var add=function(a,b){    
+    return a+b;
+}
+
+var pi=3.142;
+
+
+module.exports.count=count;
+module.exports.add=add;
+module.exports.pi=pi;
+
+approach 2) mathOperation.js
+--------------
+
+in above file we can replace module.exports as 
+
+module.exports={
+    count:count,
+    add:add,
+    pi:pi
+}
+
+
+approach 3 ) mathOperation.js
+--------------
+
+module.exports.count=function(arr){
+console.log('total elements in array are:='+arr.length)
+}
+
+
+module.exports.add=function(a,b){    
+    return a+b;
+}
+
+module.exports.pi=3.142;
+
+
+
+app.js
+--------
+//importing counter.
+var mathOperations=require('./mathOperations');
+
+//create the array of elements.
+var arr=['suraj','supath','shahrukh','pankaj'];
+
+//call the function.
+console.log(mathOperations.count(arr) );
+
+//console.log(mathOperations.add(5,mathOperations.pi));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

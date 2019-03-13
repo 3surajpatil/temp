@@ -150,3 +150,39 @@ public class EmployeeSorting {
 }
 
 }
+
+
+
+
+
+1) what is differnce between restful and restless
+
+---> Anything which not follows REST is restless. i.e. we can say SOAP is also a restless.
+---> users will have to create seperate url for each operation like delete, update. while they are making a get/post type request always.
+
+2) What is difference bwtween Controller and RestController
+
+---> https://javarevisited.blogspot.com/2017/08/difference-between-restcontroller-and-controller-annotations-spring-mvc-rest.html 
+
+
+3) What is try with resources ?
+
+---> The try-with-resources statement is a try statement that declares one or more resources. 
+A resource is an object that must be closed after the program is finished with it.
+---> One of the Java 7 feature is try-with-resources.
+---> before try with resource we used to close resources in finally block.
+---> if we forgot to close opened resources then those used to consume memory, which led to memory consumption.
+---> syntax
+	try(BufferedReader br=new BufferedReader(file){
+		...use br here.
+	}
+	catch(Exception e)
+	{
+	...
+	}
+---> in above example we don't need to close 'br' object. it will get closed automatically when execution comes out of try.
+---> we need to open resources like File / connection etc. 
+
+
+
+
