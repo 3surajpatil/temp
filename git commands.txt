@@ -4,14 +4,18 @@ git version 2.16.2.windows.1
 #for first time / one time operation.
 D:\git-repos>git config --global user.name "suraj patil"
 
-D:\git-repos>git config --global user.email "3surajpatil@gmail.com"
+>git config --global user.email "3surajpatil@gmail.com"
 
-D:\git-repos>git config --list
+>git config --list  (shows configurations locally.)
 
---> to start tracking your git directory(your code) locally initiate this command and it will create a .git file.
-(if you have created this repository from github.com gui. you can clone it directly.)
-> git clone url_of_your_repo.(copy url from repo gui.)  . (your destination locally.)
---> (if you want to start a new project then create a new folder and just initiate this command.)
+--> to start tracking your git directory(your code) locally initiate this command and it will create a .git folder
+--> if you have created this repository from github.com gui. you can clone it directly.
+
+> git clone url_of_your_repo.(copy url from repo gui.)  . (your destination where you want to copy the repository.)
+
+================== creating a new project folder ===================================================
+--> we are starting work  with local master repository. 
+--> if you want to start a new project then create a new folder and just initiate this command.
 > git init 
 
 
@@ -24,121 +28,78 @@ D:\git-repos>git config --list
 *.class
 /dir_name
 
-> git status  ---> this will list the changes made in files .
-
-> git add file_name   or git add -A  (to add all files in staging area.)
-> git reset filename or git reset (to remove all files from staging area.)---> to remove all files from staging area.
-
-now make changes to files or add new features and  then add files changed by 
-
-> git add -A / filename.
-> git status  (to list out files in staging.)
-> git commit -m "message to commit."
-
+> create 1 index.html and other files if required.
+> git add -A   (will add new files to stages)
+> git status    (will show things that are there in stages.)
+> git commit -m "first commit"
 
 > git log  ---> this will give you the commit id's 
+> $ git remote -v    (this will be blank if there is no remote repository added yet.)
 
 
+---> now we are ready to create a remote repository via gui/ browser and copy the remote add url. 
 
-D:\git-repos\tcampus>git remote -v   (lists the directories)
-origin  https://github.com/3surajpatil/tcampus.git (fetch)
-origin  https://github.com/3surajpatil/tcampus.git (push)
+> git remote add origin https://github.com/3surajpatil/practice.git
+> $ git remote -v
+origin  https://github.com/3surajpatil/practice.git (fetch)
+origin  https://github.com/3surajpatil/practice.git (push)
 
 
+--> now we have remote repository so push your content to remote repository.
+(this will push content from local master branch to remote master branch. try refreshing on your gui and look if files are pushed successfully..!)
+>  git push -u origin master  
 
-D:\git-repos\tcampus>git branch -a   (lists the local and remote branches.)
+
+---> now we will create branch of the master repository locally with name updates.
+
+
+>git branch -a    (this will list out branches locally avilable.)
 * master
-  remotes/origin/HEAD -> origin/master
   remotes/origin/master
-  remotes/origin/updates
+ 
+> git branch updates  (this will create a branch with name updates locally. if you see on gui there will be only 1 branch i.e. master as of now..)
+  
+> git checkout updates  (to switch to updates branch.)
+  
+---> once new branch is created and switched,  add changes to index.html file.
 
-> git branch new_branch name  (this will create a new branch.)
+> git diff  (this will show differences to files maded in current local branch..)
 
->  git checkout updates  (to switch to updates branch.)
-
-
-> git diff  ----> this will show differences to files maded in current branch..
-
-add changed files to stage by 
-> git add -A
-
-#************adding test changes..
-
-> git pull  (before commiting just try to get the changes made by others in that repository.)
-
-
-D:\git-repos\tcampus>git pull
-Already up to date.
-
-
-
-
-> git branch -a (to view all the branches.)
-D:\git-repos\tcampus>git branch -a
-  master
-* updates  (current working branch.)
-  remotes/origin/HEAD -> origin/master
-  remotes/origin/master
-  remotes/origin/updates
-
-
-D:\git-repos\tcampus>git checkout updates (to switch to new branch.)
-Switched to a new branch 'updates'
-Branch 'updates' set up to track remote branch 'updates' from 'origin'.
-
-makes changes and add to stage. then 
-
-> git push -u origin updates  // this will add new changes to the updates branch.
-
-
-**************************************** adding this line to test the push functionality.......!
-
-
-D:\git-repos\tcampus>git branch --merged   (this will show mearged branches.)
+---> this means you are updating contents in updates branch. whereas the content in the master branch remains same.    
+ 
+> git pull  (before commiting just try to get the changes made by others in that repository.) you will get no origin type error. no worries.
+ 
+---> now add changed files to stage mode.
+> git status
+> git add -A  
+> git status
+> git commit -m "adding <marquee> in middle content"   //just adding some content
+   
+  
+---> git push -u origin updates  (this will create an updates branch remotely and add the local 'updates' reporitory content to remote 'updates' repository )
+--->now lets go back to master branch and merge the two repositories (master and updates).  
+  
+--> git checkout master   (switching to master )
+  
+>git branch --merged    (this will show all the branches that are merged with current branch)
 * master
+ 
+> git merge updates  (merging updates branch with master branch. make sure you commit all changes in updates branch before merging.)
+  
+  
+----> wait a moment , till now you just have merged content from local updates to local master branches.
+----> its time to commit local master repository changes to remote master repo and delete the updates local branch.
+----> before committing to master branch , pulling content from master branch.
+ 
+> git pull origin master  
 
+> git push origin master    ( simmilerly if you want to push updates branch :- git push origin updates)
 
+---> now delete remote updated repository.
 
-D:\git-repos\tcampus>git pull origin master
-From https://github.com/3surajpatil/tcampus
- * branch            master     -> FETCH_HEAD
-Already up to date.
+> git push origin --delete updates
 
-D:\git-repos\tcampus>git branch --merged
-* master
-  updates
+==========================done...
 
-D:\git-repos\tcampus>git branch -d updates
-Deleted branch updates (was 0faee3c).
-
-D:\git-repos\tcampus>git push origin --delete updates  
-To https://github.com/3surajpatil/tcampus.git
- - [deleted]         updates
-
-D:\git-repos\tcampus>
-
-=============================================================================
-
-> git init
-> git add
-> git commit
-> git push
-> git clone
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+> git clone  (to clone existing repository.)
 
