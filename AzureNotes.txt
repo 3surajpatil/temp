@@ -1,0 +1,471 @@
+
+
+===========================AZ-104=============================================
+>https://docs.microsoft.com/en-us/learn/certifications/exams/az-104 download exam skills outline :- on 26th march.
+>https://portal.azure.com   
+
+suraj.srj.patil@gmail.com/suraj_p@123
+
+--------------PowerShell and cli--------------------
+
+>installed powershell 7.x via ubuntu app store.
+>to start power shell terminal just open terminal and type pwsh. it will open in pwsh mode.or you 
+can open from apps menu. look for power shell
+
+>pwsh
+>Install-Module -Name Az -AllowClobber   type 'A' to allow all packages.
+>Get-InstalledModule -Name Az -AllVersions | Select-Object -Property Name,Version 
+>
+--------------Manage Resource Groups--------------------
+#resource group is way of organizing resources in a subscription .
+->we can create resource group, resource group name should be unique across all regions.
+->we can apply lock to resource group and make that rg read only. after that no users can delete or add resource and manke changes to that rg.
+->we can apply policies to resource groups eg. creating resource in only selected regions.
+->we can move resources from one rg to another rg.
+
+https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_02b-Manage_Governance_via_Azure_Policy.md
+
+--------------Manage Subscription And Governance.--------------------
+
+
+-> Subscription is agreement with Microsoft to use Azure Services and how you are going to pay for that.
+-> we create one subscription for prod and another for dev/test.
+-> create one user by selecting domain name and then we can grant role as contributor, reader etc.
+-> by creating user and adding role we grant access to some user to the resources.
+
+-> policy :- we can create policy to apply some restrictions or standards for resources in az. like using managed disc for a vm. or to add tag for resources.
+-> policies can be created using cli.
+-> multiple subscriptions can be created so that we can choose from subscriptions to whom created resource to be billed to.
+-> management group can be created so that access levels can be set.
+-> blueprints are the entities which describe how or what resources to create.
+
+https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_02a_Manage_Subscriptions_and_RBAC.md
+
+
+--------------Monitor Az Resources with Az Monitor.--------------------
+
+->TO DO LATER
+
+--------------Create and configure storage accounts----------------------------
+
+-> premium are the ssd, which have higher r/w rates.
+-> storage account can have unique name across azure.
+-> storage ac have to be added with network if not existing then we have to create one.
+-> storage types available are cold and hot. this can be changed from configuration section. if we use very rarely then cold
+-> mostly cold is used for deleted files. restoration is charged and needs time.
+-> in advanced option we have data recovery option , there we can set period for deleted file retention. will be charged for no. of days in retention.
+-> we can add tags. like environment-> prod, billing name -> some_billing_name,created-by->suraj; like this multiple tags can be added.
+
+-> we can create a blob storage ac and container  and store some sample files in it. 
+-> once created, we can see the properties and check the url where that sa resides. but from that url we cannot list content from browser.
+-> to access content from that container we have two ways 1) keys 2) SAS token,
+-> with url we have to either add key or sas token.so then only we can access contents of the container. SAS token is the preffered and more secured way.
+-> SAS token is limited period time token. so we can give sas token to external user. it won't affect our keys for SA.
+-> we can have multiple keys added so that if we had to refresh/regenerate the key the person / script that uses the first key doesen't get affected. we cna use second
+   key.
+
+-> FileShares :- this type of storage we can mount in windows as shared disc.
+-> Tables:- stores data in columns and rows.
+-> Queues:- FIFO type of messaging storage.
+
+-> in overview section we can see egress (outgoing traffic) or ingress(incoming traffic) to that sa.
+-> Monitoring secions have tools to see the usage of sa. we can set metric like how storage account size increased in how many days.
+-> We have alerts , se can set alert like if data stored in ac exceeds 100GB then send an alert.
+-> insights is the section where we get existing template graphs we can use them as is or modify them or pin them to dashboard.
+-> LRS (locally redundent storage) keeps 3 copies within same data center.
+
+-> Access to SA can be given using IAM role. we can select SA Contributor role for a person.
+-> AzCopy tool can be downloaded and set path in env variable and used to copy file from one container to other container. also we can download and upload files from local disc. 
+-> if we want to move file form one to other container we can simply use AzCopy and perform operation on containers directly insted of downloading and uploading locally.
+
+-> via lifecycle management we can move files from hot to cool to archive by specifying no. of days. this way we can move files we use very less frequently
+   to archive and save costs. we can set path untill the folder in container or set paths for sub folders to apply this lifecycle.
+-> object replication is for replicating objects in different containers. this way we can seggregate between active and archive files. it created copy of file.
+   e.g. active and backup containers are there, file will be copied from active to backup container then we can degrage the type of storage like hot to cool.
+->HANDSON LAB:- https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_07-Manage_Azure_Storage.md
+
+   
+
+-------------Azure Files---------------------
+->Azure Files is feature that can be used to mount a storage to our vm. blobs cannot be mounted to vm's .
+-> Azure File Sync agent can be used to sync data to Azure Files. 
+
+------------ Implement Backup And Recovery.------------
+
+-> option name :- backup and site recovery(Recovery service vault.)
+-> backup policy needs to be created which mentions about when to run backup.
+-> storage accounts --> fileshare files -> can be attached for backup.
+-> backup can be triggered manually as well.
+-> we can take backup of vm as well. and recover from that backup. we get access to backup point by a executable service which allows us 
+  to access files form that backup point. executable service will will be mounted temporarily to our system once work done we can unmount that service.
+-> On Prem can be backuped with mulitple different option like file and folder via backup recovery agent 
+   and another option like copying every byte data and creating replica server.
+-> soft delete is feature which introduces delay in deleting and it will help if user changes mind to not delete files.
+
+-> Recovery Service Vault keeps our backups. 
+-> we can take backup of vm in other region and it will keep all files in other region. this way availability increases.
+
+HANDSON LAB:- https://docs.microsoft.com/en-us/azure/virtual-machines/windows/tutorial-backup-vms
+
+
+ ------------ Azure Virtual Machines ------------
+ -> availability zones could be 1,2 or 3 so that we can keep identical machine in two different availablity zone.
+ -> availablity set are for different fault domains it could be 1 or 2 or 3 domain. like fault domain:- network, power etc. and updates:- up to 20.
+ -> Monitoring-> Diagnostic Settings. enabeling diagnostic setitngs will install addional app which stores cpu,memory and disc utilization to a storage account.
+ -> insights will enable the performance and monitoring metrics. workspace needs to be created to sotre insights. workspace is different than a storage account.
+ -> vm extention is used for post vm provisioning to run script and to install apps and start apps , open ports etc.
+ -> coud init is used for post vm provisioning tasks.
+ 
+ -> rdp for windows , ssh for windows can be used to connect to a vm.
+ -> if we create a bastion network then we can connect bastion network and then login to our vm. it will save our public ip cost. and also it is much secure way to connect.
+ -> vmss is service provided to set policies which can track cpu utilization and we can create additional vm's on that basis. this is free service. only we are 
+    getting charged for vm's that we use.
+	
+ ->  Handson :- https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_08-Manage_Virtual_Machines.md
+ ->
+  ------------ Windows And Linux vm's ------------
+ -> ARM(Azure Resource Manager model) templates. :- https://github.com/gottagetgit/ARMDeploy
+ -> ARM helps to automating deployment of vm's.
+ -> virtual machine extentions are used to execute script which will deploy or do post provisioning tasks like deploying app etc.
+ -> ARM template samples. :- https://github.com/Azure/azure-quickstart-templates
+ -> Handson labs:- https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_03b-Manage_Azure_Resources_by_Using_ARM_Templates.md
+ 
+  ------------ Manage Azure VM. ------------
+ -> vm can have mulitple nic, provided nic connects to different subnet.
+ -> from disc section we can add additional disc space to our vm
+ -> from size we can increase or decrease vm size like from 4gb to 8gb ram etc. basically vm type changes. this action is disruptive.
+ -> if vm is giving trouble or not responding etc then we have redeploy option. 
+ 
+ ------------ Manage Azure VM. ------------
+ -> operations-> backup --> is for vm backup.-> it would ask fo ra recovery vault if not existing.
+ -> HandsOn https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_10-Implement_Data_Protection.md
+ -> we have restore points to restore backup from. it will create vm with same configuration as from which backup is taken of.
+ 
+
+ 
+   
+ ------------ Azure App Services------------
+ -> App services are to deploy small scale website like app. we can subscrib eto app service and then create a web app.
+ -> scaleup is option to scale up the web app services to srever larger traffic.
+ -> scaleout is option to set autoscale option configurations manually. insted of upgrading like scaleup directly.
+ -> https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_09a-Implement_Web_Apps.md
+ 
+ 
+ ------------ Azure Kubernetes Services------------
+ -> https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_09c-Implement_Azure_Kubernetes_Service.md
+
+https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_09b-Implement_Azure_Container_Instances.md
+
+Install Docker Toolbox on Windows:
+
+https://docs.docker.com/toolbox/toolbox_install_windows/
+
+Install Docker Desktop on Windows:
+
+https://docs.docker.com/docker-for-windows/install/
+ 
+------------ Manage Virtual Networking------------ 
+
+-----------------network and subnet masking-------
+
+-> we will come across something like 192.168.1.0/24 somewhere on some screen which says subnet mask and brain hangs immediately.
+-> so below is the explaination.
+
+-> we 255.255.255.255 is the decimal representation of 11111111.11111111.11111111.11111111
+-> we 255.255.0.0 is the decimal representation of 11111111.11111111.0.0
+-> we have to define our network such a way that which part is network and which part is for host.
+-> 0 defines network and 255 is broadcast address so we don't assign them to a host.
+-> in below A,B,C are the blocks of network.
+ A     B     C  
+----  ---   --- 
+255 . 255 . 255 . 255 
+ 
+-> if some network  we are defining like 192.168.1.0/24 (CIDR notation) that means we are using 3 octects as NETWORK and remaining 1 octect is for hosts.
+-> CIDR means classless inter domain routing shorthand notatoin which represents network.
+-> 192.168.1.0/24 (255.255.255.0) :- in this we can use one octect for hosts. 253 addresses
+-> 192.168.0.0/16 (255.255.0.0):- in this we can use two octects for hosts. (2^8*2^8) -4 addresses
+-> remember /24 or /16 represents network bits are are using.
+-> on this training i seen something like this 10.10.1.0/24 (255.255.255.0)
+-> 192.168.1.0/24 gives 253 addresses. and if we do 192.168.1.0/23 then we will be using 1 bit from C block (11111111.11111111.1111111 0 or 1.11111111)
+-> so it will double the ip addresses we can use something like 506 ip addresses we can use for our hosts.
+-> we can categorise our front,back, and middleware hosts by subnetting and adding them to different subnets.
+-> examples.
+-> subnet frontend 192.168.1.0/23 506 addresses. 
+-> subnet backend 192.168.2.0/22 506 addresses.
+
+-> we can get public ip by searching public ip in search bar . once created we can get a free DNS for the public ip registered.
+-> route tables define how the traffic coming in is addressed.
+
+-> VPN allows us to get traffic from external world to Azure.
+-> Microsoft have a managed service of firewall. firewall can be crated from Azure marketplace (search menu.)
+-> Azure also has option for WAN.
+
+-> HandsOn Lab:-  https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_04-Implement_Virtual_Networking.md
+
+-----------------Implement and manage virtual networking-----------------
+
+-> peering allows us to connect two vm's with each other. we can also establish communication in cross subscription.
+-> peering can be done in between different region. also we have option to forward traffic between zones.
+
+
+-----------------Configure name resolution-----------------
+-> DNS services.
+
+-----------------Secure access to virtual networks-----------------
+-> nsg (network security groups)
+-> all inbound and outbound traffic etc are managed here.
+-> vm's on same virtual network are allowed to communicate with each other.
+-> There is a tutorial on Microsoft Docs that steps through creating an NSG that you can follow along with:
+   https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-filter-network-traffic
+-> You also try the hands on lab on Github: 
+-> https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_04-Implement_Virtual_Networking.md
+
+
+-----------------Configure load balancing-----------------
+-> load balencers distribute traffic across different vm's .
+-> load balencer needs a public ip.
+-> backend pools are required to to add to load balencers. bakend pools can have vm's in them.
+-> load balencers can be created via dashboard search menus.
+-> health probes are there to monitor the ports of perticuler vm's service. health probe continiously checks tcp/port specified is working.
+-> probes have option to define http html page form app.
+-> front end ip to be added in loadbalencerrule. health probe to be added to loadbalencerrule.
+-> we can add second ip address to load balencer and from that second ip address of lb we can forward traffic to other port 8080 like different port on same vm's .
+-> load balencer sits at layer 4 (TCP) of network stack, it just understands source, destination, protocol port etc.
+-> loadbalencer can't understand url and path based routing. so for that we need Applicaiton Gateway. 
+-> Application Gateway sits at layer 7 of network stack. we can also attach a firewall with application gateway. application gateway is same as load balencer but with 
+   little bit more understanding till url and costly as well.
+-> HandsOn Labs :-  https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_06-Implement_Network_Traffic_Management.md
+-> github.com/Azure
+
+-----------------Monitor and troubleshoot virtual networking-----------------
+-> Network Performance Monitor 
+-> network watcher :- it works at regional level.
+-> ip flow verify is to check connectivity between two ip's by specifying ip's and inbound or outbound traffic and port no.
+-> packet capture is also one tool to track packets.
+-> https://azurecitadel.com/infra/vdc/lab4/
+-> how to pass az104 http://bit.ly/2PkFzRY
+-> https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/tree/master/Instructions/Labs
+-> https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_06-Implement_Network_Traffic_Management.md
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
