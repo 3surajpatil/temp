@@ -1,0 +1,26 @@
+Linux Commands
+
+1) ln -s target  new-link-name
+
+#------to check status of service -------------------
+>service mysql status  
+#fro other options 
+>service mysql 
+ex.
+suraj@Suraj:~$ service mysql
+Usage: /etc/init.d/mysql start|stop|restart|reload|force-reload|status|bootstrap
+suraj@Suraj:~$ service mysql status
+> ps -ef |  grep process_name
+
+#it will show process which is using port 8080.
+>fuser 8080/tcp  
+
+-----------to search a string in file and list all files  -------------------
+>grep -l "search string" filename...*ext
+
+
+
+------------Creating desktop Shortcut -------------------
+
+>add your installation directory to /opt/{application-directory}
+>create 1 application entry in /usr/applications/{application-name}.desktop

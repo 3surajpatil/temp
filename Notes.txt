@@ -1,0 +1,13 @@
+monitor  enable 
+
+
+https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-dev-start-howto-vm-java?view=azs-2008
+https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-dev-start-howto-deploy-linux?view=azs-2008
+
+CCMB513451591Ab5
+ you require any further clarification, kindly contact us on +91(India) 6366920680 or support@clickastro.com
+ 
+ 
+ 
+ 
+ 

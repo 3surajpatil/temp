@@ -61,7 +61,7 @@ https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/mas
 -> to access content from that container we have two ways 1) keys 2) SAS token,
 -> with url we have to either add key or sas token.so then only we can access contents of the container. SAS token is the preffered and more secured way.
 -> SAS token is limited period time token. so we can give sas token to external user. it won't affect our keys for SA.
--> we can have multiple keys added so that if we had to refresh/regenerate the key the person / script that uses the first key doesen't get affected. we cna use second
+-> we can have multiple keys added so that if we had to refresh/regenerate the key the person / script that uses the first key doesen't get affected. we can use second
    key.
 
 -> FileShares :- this type of storage we can mount in windows as shared disc.
@@ -87,7 +87,7 @@ https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/mas
    
 
 -------------Azure Files---------------------
-->Azure Files is feature that can be used to mount a storage to our vm. blobs cannot be mounted to vm's .
+-> Azure Files is feature that can be used to mount a storage to our vm. blobs cannot be mounted to vm's .
 -> Azure File Sync agent can be used to sync data to Azure Files. 
 
 ------------ Implement Backup And Recovery.------------
@@ -183,7 +183,7 @@ https://docs.docker.com/docker-for-windows/install/
 -> if some network  we are defining like 192.168.1.0/24 (CIDR notation) that means we are using 3 octects as NETWORK and remaining 1 octect is for hosts.
 -> CIDR means classless inter domain routing shorthand notatoin which represents network.
 -> 192.168.1.0/24 (255.255.255.0) :- in this we can use one octect for hosts. 253 addresses
--> 192.168.0.0/16 (255.255.0.0):- in this we can use two octects for hosts. (2^8*2^8) -4 addresses
+-> 192.168.0.0/16 (255.255.0.0):- in this we can use two octects for hosts. (2^8*2^8) minus 4 addresses
 -> remember /24 or /16 represents network bits are are using.
 -> on this training i seen something like this 10.10.1.0/24 (255.255.255.0)
 -> 192.168.1.0/24 gives 253 addresses. and if we do 192.168.1.0/23 then we will be using 1 bit from C block (11111111.11111111.1111111 0 or 1.11111111)
@@ -191,7 +191,7 @@ https://docs.docker.com/docker-for-windows/install/
 -> we can categorise our front,back, and middleware hosts by subnetting and adding them to different subnets.
 -> examples.
 -> subnet frontend 192.168.1.0/23 506 addresses. 
--> subnet backend 192.168.2.0/22 506 addresses.
+-> subnet backend 192.168.2.0/22 1012 addresses.
 
 -> we can get public ip by searching public ip in search bar . once created we can get a free DNS for the public ip registered.
 -> route tables define how the traffic coming in is addressed.

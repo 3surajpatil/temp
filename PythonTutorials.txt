@@ -1,0 +1,26 @@
+python tutorials https://courses.cognitiveclass.ai/courses/course-v1:Cognitiveclass+PY0101EN+v2/course/
+=================
+
+
+there are 3 types 
+1) int (1)
+2) float (1.2)
+3) str('AbcdesdfadrSsf')
+4) Boolean (True,False)
+
+
+#to convert int to float 
+
+float(1):- 1.0
+int(1.1):- 1
+bool(1):- True
+bool(0):- False
+
+#expressions
+> the paranthesis will be resolved first.
+> in an expression with * & + , * will be solved first.
+> we can assign result to variable.
+>integers can be negative or positive numbers.
+
+
+
