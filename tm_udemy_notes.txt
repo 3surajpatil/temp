@@ -1,0 +1,162 @@
+jenkins notes
+-----------------------
+========================
+what is artifactory and what is use of artifactory.
+
+
+>copy artifacts plugin
+>deploy to container plugin
+>quitch is the tool used to integratted with jenkins and to manage db schema syncups
+>what are jnlp files ?
+
+
+
+-docker notes
+------------------------
+========================
+https://github.com/jleetutorial/dockerapp
+
+
+>docker info --> gives docker installation information.
+>docker images  ---> shows all available docker images.
+>docker run busybox echo "hello world"
+>docker run -i -t busybox:latest
+>docker run -d busybox:latest sleep 1000
+>docker ps
+>docker ps -a
+>docker run -it --rm -p 8888:8080 tomcat:8.0 (rm will exit container when the process used running on that container is stopped )
+>docker run -it -d -p 8888:8080 tomcat:8.0  (returns container id)
+>docker logs <container_id>
+
+working with docker images
+--------------------------
+>docker history busybox:(version-optional) it will give us the list how image layers are built.
+
+>there are two ways we can create docker image. 
+1)commit changes to container
+2)write a docker file.
+
+approach 1>1)commit changes to container
+
+>docker run -it debian:jessie
+>apt-get update
+>install git
+>docker ps -a
+>docker commit <container_id> dockerusername/image_nameortagnameyouwanttogivetoimage .  (dot is path of Dockerfile where to find)
+
+
+approach 2>2)write a docker file.
+>touch Dockerfile
+>vi Dockerfile
+FROM debian:jessie
+RUN apt-get update
+RUN apt-get install -y git
+RUN apt-get install -y vim
+>docker build -t dockerusername/image_nameortagnameyouwanttogivetoimage .
+>docker images
+
+
+>note that each run command in docker file creates a new commit and image. so to reduce multiple commits we can aggregate the commands in one line. ex. below
+>vi Dockerfile
+FROM debian:jessie
+RUN apt-get update && RUN apt-get install -y\
+git\
+vim
+
+>package names should be given in alphanumeric order to avoid duplications. for best practice.
+>we can specify command line instructions what to do when image is created.
+
+>vi Dockerfile
+FROM debian:jessie
+RUN apt-get update && RUN apt-get install -y\
+ git\
+ vim
+CMD ["echo","hello world"]
+>docker build -t dockerusername/image_nameortagnameyouwanttogivetoimage .
+> we can also pass command while starting image.
+>docker run <image_id> echo "hello docker"
+
+---------------docker cache-----------------------
+>images are built and cached.first time image build takes time but secont time it uses same image to build next image.
+>docker build -t rspatil/debian . --no-cache=true  for not caching. in case if you want to take latest updates like in apt-get update etc.
+
+-----------COPY instructions---------
+>touch abc.txt
+>vi Dockerfile  add below line.
+>COPY abc.txt /src/abc.txt 
+
+>ADD instruction is simmiler to copy but difference is it will download from internet. also ADD has facility to extract the files at specified path when downloaded.
+>ADD should be used when we are sure about what is getting downloaded. COPY is preffered when we want to restrict to exact versions/files.
+
+
+
+------------pushing docker images to docker hub.---------------------
+>docker images
+>docker tag <image_id> rspatil/debian:1.01     (if version not specified it will tag as latest image)
+>docker login --username=rspatil
+>docker push rspatil/debian:1.01
+
+
+
+
+
+>git clone -b v0.1 https://github.com/jleetutorial/dockerapp.git
+
+>docker-compose file is used when we need multiple container
+
+https://www.level-up.one/dockers-monitoring-tools/
+https://www.level-up.one/devops-pdf-book/
+https://www.facebook.com/groups/1911219079195863/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
