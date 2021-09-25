@@ -24,3 +24,31 @@ suraj@Suraj:~$ service mysql status
 
 >add your installation directory to /opt/{application-directory}
 >create 1 application entry in /usr/applications/{application-name}.desktop
+
+# generating ssh public private key pair.
+#
+>ssh-keygen -b 2048 -t rsa -f my_private_key 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

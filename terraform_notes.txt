@@ -1,0 +1,191 @@
+
+#course content
+https://github.com/in4it/terraform-azure-course/archive/master.zip
+
+#course content github url 
+https://github.com/in4it/terraform-azure-course
+
+
+1) terraform core is different component than terraform . it is made to interact with different providers like aws, azure etc. 
+
+2) if there are new resources introduced in provider, it will not impact terraform. terraform core helps to adhare those changes so that we don't need to update terraform.
+
+3) terrraform providers registry :- https://registry.terraform.io/browse/providers  
+
+
+#Provisioners
+1) there are Local,Remote,Packer,cloud init provisioners
+2) local are for executing something locally after spinning up a vm
+
+
+
+Terraform Azure
+================
+
+	
+1) Resource Manager :- this is deployment and management service for Azure resources.its management layer creates,deletes,updates 
+resources in Azure Subscription.
+
+2) terraform and Azure CLI connects AZURE SDK ,and Azure SDK connects Azure Resource Managers.
+
+3)Resource groups
+-------------------
+	--> are containers to hold your resources as vm's, Network Interfaces(NIC) , virtual networks (VNets)
+	--> resource groups are part of Resource Managers.
+	--> subscription can contain multiple resource groups. so subscriptions are containers for resource groups.
+	--> resources from one RG can be allowed to be accessed by other resource groups. like vnet.
+	--> resources can be moved from one to another resource group.
+
+#documentation on what tags required for each resource could be found at providers documentation.
+https://registry.terraform.io/providers/hashicorp/azurerm
+--> select documentation section --> search for --> Azure_rm_resource 
+
+https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group
+
+
+4) Virtual Networks.
+------------------------
+--> provides you with private network in Azure.
+--> this is first resource you need to have before creating vm's.
+--> we need to give CIDR notation here. like 255.255.255.0/24  (MASK/CIDR Prefix.)
+--> once vm is created, we can use create subnet for vm's and then for db's.
+--> once subnet is created, we can create vm in vm's subnet.
+---> some ip's will be reserved by Azure as x.x.x.0 (network address),x.x.x.1 (default gateway),x.x.x.2 ,x.x.x.3 (to map Azure DNS ip's to the vnet space.),x.x.x.255 ( network broadcast address.)
+
+--> for each subnet we create , azure crates a route table to ensure connectivity.
+
+5) Virtual Machines.
+------------------------
+
+6) Network Interface
+------------------------
+--> you can assign Network Security Groups to create firewall rules for your instance.
+--> you can assign private or public ip address to your instance.
+--> ip allocation can be dynamic and static. also when Network interface is deleted, ip addresses assigned will get deleted.
+
+7) Network Security Groups
+---------------------------
+--> Network security Groups can filter traffic inbound or outbount to or from our Azure Resources.
+--> here we open ports for services like 8443,6969 etc..
+--> Application Security Group can be attached to NSG. this is useful when we have multiple vm's(multiple NIC's ) so we can bundle them in single ASG and create only one rule at NSG for all the vm's in that ASG.
+--> trouble shooting :- i) connection timeout :- it could be because of NSG blocking your request. or something wrong with vm.
+						ii) connection refused :- most likely its because of service is not running on that port or port is not open.
+						
+						
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
