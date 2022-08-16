@@ -1,0 +1,7 @@
+#Example - find the most popular commands related to the word blob.
+>az find blob
+>az find "az vm"
+>az find "az vm create"
+
+#If you already know the name of the command you want, the --help argument for that command will get you more detailed information on the command,
+az storage blob --help

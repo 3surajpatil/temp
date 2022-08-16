@@ -97,7 +97,7 @@ CMD ["echo","hello world"]
 >docker push rspatil/debian:1.01
 
 
-
+> docker compose yaml file is used to define multiple containers and all those can be started in single docker compose up like instructions.
 
 
 >git clone -b v0.1 https://github.com/jleetutorial/dockerapp.git

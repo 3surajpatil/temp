@@ -6,8 +6,25 @@
 
 suraj.srj.patil@gmail.com/suraj_p@123
 
---------------PowerShell and cli--------------------
+============================ PowerShell and cli ========================================================
+-------------CLI---------------------------
 
+-->When creating a new Azure resource, there are typically three steps: connect to your Azure subscription, create the resource, and verify that creation was successful. The following illustration shows a high-level overview of the process.
+>az login
+#to create a resource group.
+>az group create --name <name> --location <location>   
+#verify group created. For many Azure resources, the Azure CLI provides a list subcommand to view resource details.
+>az group list
+>az group list --output table
+
+#Example - find the most popular commands related to the word blob.
+>az find blob
+>az find "az vm"
+>az find "az vm create"
+
+
+
+-------------PowerShell...---------------------------
 >installed powershell 7.x via ubuntu app store.
 >to start power shell terminal just open terminal and type pwsh. it will open in pwsh mode.or you 
 can open from apps menu. look for power shell

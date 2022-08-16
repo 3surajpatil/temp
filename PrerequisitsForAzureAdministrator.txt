@@ -1,0 +1,175 @@
+Module :- Choose Best IOT Service for your application
+link :- https://docs.microsoft.com/en-us/learn/modules/iot-fundamentals/
+=======================================================
+-> IoT bridges the physical and digital worlds by enabling devices with sensors and an internet connection to communicate with cloud-based systems via the internet.
+
+-> A few common sensors that measure attributes of the physical world include:
+
+Environmental sensors that capture temperature and humidity levels.
+Barcode, QR code, or optical character recognition (OCR) scanners.
+Geo-location and proximity sensors.
+Light, color, and infrared sensors.
+Sound and ultrasonic sensors.
+Motion and touch sensors.
+Accelerometer and tilt sensors.
+Smoke, gas, and alcohol sensors.
+Error sensors to detect when there's a problem with the device.
+Mechanical sensors that detect anomalies or deformations.
+Flow, level, and pressure sensors for measuring gasses and liquids.
+
+-> Many services can assist and drive end-to-end solutions for IoT on Azure.
+-->Azure IoT Hub is a managed service that's hosted in the cloud and that acts as a central message hub for bi-directional communication between your IoT application and the devices it manages.
+-->Azure IoT Central builds on top of IoT Hub by adding a dashboard that allows you to connect, monitor, and manage your IoT devices. 
+-->Azure Sphere
+Azure Sphere creates an end-to-end, highly secure IoT solution for customers that encompasses everything from the hardware and operating system on the device to the secure method of sending messages from the device to the message hub. Azure Sphere has built-in communication and security features for internet-connected devices.
+--->Azure Sphere comes in three parts:
+----->the first part is the Azure Sphere micro-controller unit (MCU), which is responsible for processing the operating system and signals from attached sensors.
+----->The second part is a customized Linux operating system (OS) that handles communication with the security service and can run the vendor's software.
+----->The third part is Azure Sphere Security Service, also known as AS3. Its job is to make sure that the device has not been maliciously compromised. When the device attempts to connect to Azure, it first must authenticate itself, per device, which it does by using certificate-based authentication.
+
+
+=======================================================
+Module :-  Choose the best AI service for your needs
+link :- https://docs.microsoft.com/en-us/learn/modules/ai-machine-learning-fundamentals/
+=======================================================
+->Artificial Intelligence (AI) is a category of computing that adapts and improves its decision-making ability over time based on its successes and failures. 
+->A goal of AI is to create a software system that's able to adapt, or learn something on its own without being explicitly programmed to do it.
+-> There are two basic approaches to AI. 
+-->The first is to employ a deep learning system that's modeled on the neural network of the human mind, enabling it to discover, learn, and grow through experience.
+
+-->The second approach is machine learning, a data science technique that uses existing data to train a model, test it, and then apply the model to new data to forecast future behaviors, outcomes, and trends.
+
+Azure product options
+---------------------
+1) Azure Machine Learning:- is a platform for making predictions. It consists of tools and services that allow you to connect to data to train and test models to find one that will most accurately predict a future result. After you've run experiments to test the model, you can deploy and use it in real time via a web API endpoint.
+--->Choose Azure Machine Learning when your data scientists need complete control over the design and training of an algorithm using your own data. 
+
+2) Azure Cognitive Services :- provides prebuilt machine learning models that enable applications to see, hear, speak, understand, and even begin to reason. Use Azure Cognitive Services to solve general problems, such as analyzing text for emotional sentiment or analyzing images to recognize objects or faces.
+
+Azure Cognitive Services can be divided into the following categories:
+
+Language services: Allow your apps to process natural language with prebuilt scripts, evaluate sentiment, and learn how to recognize what users want.
+Speech services: Convert speech into text and text into natural-sounding speech. Translate from one language to another and enable speaker verification and recognition.
+Vision services: Add recognition and identification capabilities when you're analyzing pictures, videos, and other visual content.
+Decision services: Add personalized recommendations for each user that automatically improve each time they're used, moderate content to monitor and remove offensive or risky content, and detect abnormalities in your time series data.
+
+3) Azure Bot Service and Bot Framework :-  are platforms for creating virtual agents that understand and reply to questions just like a human. Azure Bot Service is a bit different from Azure Machine Learning and Azure Cognitive Services in that it has a specific use case. Namely, it creates a virtual agent that can intelligently communicate with humans. Behind the scenes, the bot you build uses other Azure services, such as Azure Cognitive Services
+
+=======================================================
+Module :-  Choose the best Azure serverless technology for your business scenario.
+link :- https://docs.microsoft.com/en-us/learn/modules/serverless-fundamentals/
+=======================================================
+-> Serverless computing is ordinarily used to handle back-end scenarios. In other words, serverless computing is responsible for sending messages from one system to another, or processing messages that were sent from other systems. It's not used for user-facing systems but, rather, it works in the background.
+
+1) Azure Functions :- 
+--> With the Azure Functions service, you can host a single method or function by using a popular programming language in the cloud that runs in response to an event.
+
+2) Azure Logic Apps :- 
+--> is a low-code/no-code development platform hosted as a cloud service. The service helps you automate and orchestrate tasks, business processes, and workflows when you need to integrate apps, data, systems, and services across enterprises or organizations
+--> Azure Logic Apps is designed in a web-based designer and can execute logic that's triggered by Azure services without writing any code. You build an app by linking triggers to actions with connectors. A trigger is an event (such as a timer) that causes an app to execute, then a new message to be sent to a queue, or an HTTP request. An action is a task or step that can execute. There are logic actions such as those you would find in most programming languages. Examples of actions include working with variables, decision statements and loops, and tasks that parse and modify data.
+->When the company needed to build a solution that pulls code logic from an existing C# Windows service, we helped it choose Azure Functions.
+->When the company needed to orchestrate a workflow to improve customer retention after a negative shopping experience, we helped it choose Azure Logic Apps.
+
+
+=======================================================
+Module :-  Choose the best tools to help organizations build better solutions
+link :- https://docs.microsoft.com/en-us/learn/modules/azure-devops-devtest-labs/
+=======================================================
+1) GitHub and GitHub Actions
+
+GitHub is arguably the world's most popular code repository for open-source software. Git is a decentralized source-code management tool, and GitHub is a hosted version of Git that serves as the primary remote. GitHub builds on top of Git to provide related services for coordinating work, reporting and discussing issues, providing documentation, and more. It offers the following functionality:
+
+2) Azure DevTest Labs
+Azure DevTest Labs provides an automated means of managing the process of building, setting up, and tearing down virtual machines (VMs) that contain builds of your software projects. This way, developers and testers can perform tests across a variety of environments and builds. And this capability isn't limited to VMs. Anything you can deploy in Azure via an ARM template can be provisioned through DevTest Labs. Provisioning pre-created lab environments with their required configurations and tools already installed is a huge time saver for quality assurance professionals and developers.
+
+
+
+
+=========================================================================================================
+Module :-  Choose the best tools for managing and configuring your Azure environment
+link :- https://docs.microsoft.com/en-us/learn/modules/management-fundamentals/
+=========================================================================================================
+
+1) The Azure portal :- By using the Azure portal, a web-based user interface, you can access virtually every feature of Azure. The Azure portal provides a friendly, graphical UI to view all the services you're using, create new services, configure your services, and view reports.
+
+
+2) The Azure mobile app :- with mobile apps we can 
+	a) Monitor the health and status of your Azure resources.
+	b) Check for alerts, quickly diagnose and fix issues, and restart a web app or virtual machine (VM).
+	c)Run the Azure CLI or Azure PowerShell commands to manage your Azure resources.
+
+3) Azure PowerShell :- Az powershell commands call the Azure Rest API to perform every possible management task in Azure. 
+4) The Azure CLI :-use cli when you have linux background or bash shell awareness. The Azure CLI command-line interface is an executable program with which a developer, DevOps professional, or IT professional can execute commands in Bash.In many respects, the Azure CLI is almost identical to Azure PowerShell in what you can do with it. Both run on Windows, Linux, and Mac, and can be accessed in a web browser via Cloud Shell. The primary difference is the syntax you use. If you're already proficient in PowerShell or Bash, you can use the tool you prefer. 	
+
+5) ARM templates :- 
+By using Azure Resource Manager templates (ARM templates), you can describe the resources you want to use in a declarative JSON format. The benefit is that the entire ARM template is verified before any code is executed to ensure that the resources will be created and connected correctly. The template then orchestrates the creation of those resources in parallel. That is, if you need 50 instances of the same resource, all 50 instances are created at the same time.
+
+Ultimately, the developer, DevOps professional, or IT professional needs only to define the desired state and configuration of each resource in the ARM template, and the template does the rest. Templates can even execute PowerShell and Bash scripts before or after the resource has been set up.
+
+--> Azure PowerShell and the Azure CLI are Azure management tools that allow you to quickly obtain the IP address of a virtual machine (VM) you've deployed, reboot a VM, or scale an app. You might want to keep custom scripts for both tools handy on your local hard drive for certain operations that you need to perform multiple times.
+
+By contrast to the Azure CLI and PowerShell, Azure Resource Manager templates (ARM templates) define the infrastructure requirements in your application for repeatable deployments. Although ARM templates aren't intended for one-off scenarios, it's possible to use them for this purpose. However, for one-off scenarios, you may prefer more agile tools like PowerShell, Azure CLI scripts, or the Azure portal.
+
+--> Do you need a way to repeatedly set up one or more resources and ensure that all the dependencies are created in the proper order?
+ARM templates define your application's infrastructure requirements for a repeatable deployment that is done in a consistent manner. A validation step ensures that all resources can be created in the proper order based on dependencies, in parallel, and idempotent.
+
+=========================================================================================================
+Module :-  CChoose the best monitoring service for visibility, insight, and outage mitigation
+link :- https://docs.microsoft.com/en-us/learn/modules/monitoring-fundamentals/
+=========================================================================================================
+
+1) Azure Advisor evaluates your Azure resources and makes recommendations to help improve reliability, security, and performance, achieve operational excellence, and reduce costs.
+
+2) Azure Monitor is a platform for collecting, analyzing, visualizing, and potentially taking action based on the metric and logging data from your entire Azure and on-premises environment.
+
+3) Azure Service Health provides a personalized view of the health of the Azure services, regions, and resources you rely on. The status.azure.com website, which displays only major issues that broadly affect Azure customers, doesn't provide the full picture. But Azure Service Health displays both major and smaller, localized issues that affect you. 
+->Service Health helps you keep an eye on several event types:
+
+-->Service issues are problems in Azure, such as outages, that affect you right now. You can drill down to the affected services, regions, updates from your engineering teams, and find ways to share and track the latest information.
+-->Planned maintenance events can affect your availability. You can drill down to the affected services, regions, and details to show how an event will affect you and what you need to do. Most of these events occur without any impact to you and aren't shown here. In the rare case that a reboot is required, Service Health allows you to choose when to perform the maintenance to minimize the downtime.
+-->Health advisories are issues that require you to act to avoid service interruption, including service retirements and breaking changes. Health advisories are announced far in advance to allow you to plan.
+
+->Do you need to analyze how you're using Azure to reduce costs, improve resilience, or harden your security?
+Choose Azure Advisor when you're looking for an analysis of your deployed resources.
+	
+=========================================================================================================
+Module :-  Secure network connectivity on Azure
+link :- https://docs.microsoft.com/en-us/learn/modules/secure-network-connectivity-azure/
+=========================================================================================================
+
+
+->Protect virtual networks by using Azure Firewall
+-->A firewall is a network security device that monitors incoming and outgoing network traffic and decides whether to allow or block specific traffic based on a defined set of security rules.
+--> Azure Firewall uses a static (unchanging) public IP address for your virtual network resources, which enables outside firewalls to identify traffic coming from your virtual network. The service is integrated with Azure Monitor to enable logging and analytics.
+-->Azure Firewall provides many features, including:
+Built-in high availability.
+Unrestricted cloud scalability.
+Inbound and outbound filtering rules.
+Inbound Destination Network Address Translation (DNAT) support.
+Azure Monitor logging.
+
+--> Filter network traffic by using network security groups
+--> Although Azure Firewall and Azure DDoS Protection can help control what traffic can come from outside sources, Tailwind Traders also wants to understand how to protect its internal networks on Azure. Doing so will give the company an extra layer of defense against attacks.
+--> When you create a network security group, Azure creates a series of default rules to provide a baseline level of security. You can't remove the default rules, but you can override them by creating new rules with higher priorities
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
