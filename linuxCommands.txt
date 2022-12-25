@@ -17,6 +17,7 @@ suraj@Suraj:~$ service mysql status
 
 -----------to search a string in file and list all files  -------------------
 >grep -l "search string" filename...*ext
+>grep -c 'sometext' filename_dd_yy*
 
 
 
@@ -29,6 +30,9 @@ suraj@Suraj:~$ service mysql status
 #
 >ssh-keygen -b 2048 -t rsa -f my_private_key 
 
+
+--to configure laternative java------------------------
+sudo update-alternatives --config java
 
 
 
