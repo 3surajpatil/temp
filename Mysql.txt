@@ -1,0 +1,40 @@
+
+#-----------------------drop and create a user.-----------------------
+
+# to view all users 
+select * from mysql.user;
+
+#this will delete only user  which could give 1396 error later. so use drop.
+DELETE FROM mysql.user WHERE user = 'suraj';
+
+#drop a user.
+drop user 'suraj';
+
+#create a user
+CREATE USER 'suraj'@'localhost' IDENTIFIED BY 'password';
+
+#if above create user command gives error again, do flush.
+flush privileges;
+
+
+
+
+
+
+
+***********************Update Query*****************
+
+update users set uname='patil' where `users`.pword="patil"
+
+***********************Select Query*****************
+select * from users
+
+***********************Insert Query*****************
+
+insert into `mydb`.`users` values('patil','suraj');
+
+***********************Delete Query*****************
+
+delete from `users` where uname='patil'
+
+*********************************************************

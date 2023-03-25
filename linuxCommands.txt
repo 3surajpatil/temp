@@ -2,6 +2,12 @@ Linux Commands
 
 1) ln -s target  new-link-name
 
+
+#----------------------------------------------------
+# to remove application / package installed.
+>
+> sudo apt-get remove teams
+
 #------to check status of service -------------------
 >service mysql status  
 #fro other options 
@@ -25,6 +31,9 @@ suraj@Suraj:~$ service mysql status
 
 >add your installation directory to /opt/{application-directory}
 >create 1 application entry in /usr/applications/{application-name}.desktop
+> 
+> or if above location not found check >  /usr/share/applications  e.g. /usr/share/applications/Eclipse.desktop
+
 
 # generating ssh public private key pair.
 #
@@ -33,6 +42,15 @@ suraj@Suraj:~$ service mysql status
 
 --to configure laternative java------------------------
 sudo update-alternatives --config java
+
+
+#to run other script from current shell 
+
+>source hello-world.sh
+>. ./hello-world.sh 
+>bash hellow-world.sh
+---> with command bash -x, we can see the shell expansion
+
 
 
 

@@ -1,3 +1,7 @@
+#for quick reference.
+> packer build
+> packer build -debug vm.pkr.hcl
+
 
 #course content
 https://github.com/in4it/terraform-azure-course/archive/master.zip
@@ -16,6 +20,36 @@ https://github.com/in4it/terraform-azure-course
 #Provisioners
 1) there are Local,Remote,Packer,cloud init provisioners
 2) local are for executing something locally after spinning up a vm
+
+
+
+# Sign in
+```
+az login
+```
+# Run Terraform init
+```
+terraform init
+```
+# Run Terraform apply
+```
+terraform apply
+```
+# Example conditionally omitted argument
+# Run Terraform plan
+```
+terraform plan --var override_tier=cool
+```
+
+# Example conditional expression
+# Run Terraform plan
+terraform plan --var filename=productionfile.txt
+
+# Cleanup Demo
+```
+terraform destroy
+```
+
 
 
 
