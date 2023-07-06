@@ -1,4 +1,17 @@
 
+
+
+#---- create database --------------------------
+-- we use root user to create db.and grant privileges to other user.
+
+
+>create database xtockdb;
+>GRANT ALL PRIVILEGES ON database_name.* TO 'suraj'@'localhost';
+>flush privileges;
+
+
+
+
 #-----------------------drop and create a user.-----------------------
 
 # to view all users 
@@ -13,28 +26,101 @@ drop user 'suraj';
 #create a user
 CREATE USER 'suraj'@'localhost' IDENTIFIED BY 'password';
 
+
+
+-- granting all permission to specific database. when this user is connected via localhost.
+GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'localhost';
+
+--  granting all permission to specific database. when this user is connected via any valid dns
+GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'%';
+
+-- granting permission to specific table from books database. when this user is connected via localhost.
+GRANT ALL PRIVILEGES ON books.authors  TO 'suraj'@'localhost';
+
+-- specific privileges example.
+GRANT SELECT,INSERT,UPDATE,DELETE ON library.* TO 'librarymanager'@'localhost' WITH GRANT OPTION;
+
+GRANT ALL PRIVILEGES ON testdatabase.* TO 'suraj'@'localhost';
+
+REVOKE SELECT ON *.* FROM 'suraj'@'localhost';
+
+REVOKE SELECT ON accounting.* FROM 'meredith'@'localhost';
+
+REVOKE UPDATE ON accounting.revenue FROM 'frank'@'localhost';
+
+REVOKE ALL PRIVILEGES ON *.* FROM 'suraj'@'localhost';
+
+revoke ALL ON *.* from 'suraj'@'localhost';
+REVOKE ALL ON database_name.* FROM 'suraj'@'localhost';
+
+
+select * from mysql.user;
+SHOW GRANTS FOR '<user>'@'<host>';
+
+show grants for 'suraj'@'localhost';
+
+
+
 #if above create user command gives error again, do flush.
 flush privileges;
 
 
 
-
-
-
-
-***********************Update Query*****************
+--------------------------------------------------Update Query--------------------------------------------------
 
 update users set uname='patil' where `users`.pword="patil"
 
-***********************Select Query*****************
+--------------------------------------------------Select Query--------------------------------------------------
 select * from users
 
-***********************Insert Query*****************
+--------------------------------------------------Insert Query--------------------------------------------------
 
 insert into `mydb`.`users` values('patil','suraj');
 
-***********************Delete Query*****************
+--------------------------------------------------Delete Query--------------------------------------------------
 
 delete from `users` where uname='patil'
 
-*********************************************************
+--------------------------------------------------
+
+
+
+--------------------------------------------------Create Table query. Query--------------------------------------------------
+
+
+create table nifty200(
+id INT(50) primary key,    -- here size is size how many characters to display , int range is -2147483648 to 2147483647. Unsigned range is from 0 to 4294967295.
+TRADE_DATE DATE,  			-- 'YYYY-MM-DD'
+SYMBOL VARCHAR(250),
+OPEN_P FLOAT(20,2),     -- FLOAT supports from 0 to 24, and 2 decimal places. 
+HIGH_P FLOAT(20,2),
+LOW_P FLOAT(20,2),    
+PREV_CLOSE_P FLOAT(20,2),
+LTP_P FLOAT(20,2),
+CHNG FLOAT(20,2),
+PERCENT_CHNG FLOAT(20,2),
+SHARE_VOLUME DOUBLE(30, 2),   -- DOUBLE supports from 25 to 53
+TRADE_VALUE DOUBLE(30, 2),
+52WH_P FLOAT(20,2),	
+52WL_P FLOAT(20,2) 	
+ );
+ 
+--------------------------- ALTER TABLE QUERY --------------------------------------------------
+>ALTER TABLE `xtockdb`.`nifty200` 
+CHANGE COLUMN `id` `id` INT(50) NOT NULL AUTO_INCREMENT ;
+
+>ALTER TABLE employee add(bonous float(5,2));
+
+--------------------------- DELETE QUERY  SAMPLES--------------------------------------------------
+
+delete from employee where ename is null;
+
+
+
+
+
+
+
+
+
+

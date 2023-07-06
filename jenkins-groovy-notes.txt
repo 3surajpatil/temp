@@ -1,0 +1,13 @@
+
+
+>it is easy to create a pipeline with groovy script. than creating multiple jobs.
+>things can be achieved with multiple freestyle projects but tedious process to manage via gui only.
+> once we create a script , we can manage via git/source control.
+
+
+groovy scripts can be of two type 
+1) scripted which starts with node 
+2) declarative which starts with pipeline-- agent name stages[stage{}]
+
+2) declarative pipeline has more benifits than scripted pipeline, like looping, skipping one stage 
+
