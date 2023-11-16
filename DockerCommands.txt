@@ -1,0 +1,97 @@
+------------------------------- frequent commands.
+# to freeup disc space / cache used by docker.
+> docker system prune
+
+
+cd /home/workload/git/spring-boot-apps/springbootmysql/
+
+mvn package -DskipTests=true
+
+docker rmi -f local:springboot-mysql
+
+docker build -t local:springboot-mysql .
+
+#this will run  docker iamge on local network so that local mysql will be accesible to spring boot application.
+docker run -it  --network host bb7fe66b131b
+
+#to run in detached mode
+#docker run -d --network host --restart unless-stopped bb7fe66b131b    // need to change image id every time
+
+#name=suraj-sb-mysql is container name
+docker run -d --network host --name suraj-sb-mysql --restart unless-stopped local:springboot-mysql
+
+docker container ls
+docker container ls -a   # shows stopped containers also.
+
+docker stop 223eebd30322(container id)
+
+#to remove docker container
+docker rm --force redis
+
+#to remove all stopped containers
+docker container prune
+
+#here name=suraj-sb-mysql is container name
+sh 'docker ps -f name=suraj-sb-mysql -q | xargs --no-run-if-empty docker container stop'
+sh 'docker container ls -a -f name=suraj-sb-mysql -q | xargs -r docker container rm'
+
+
+
+
+#rename a docker container
+docker rename naughty_volhard suraj-sb-mysql
+
+
+#list docker containers
+docker ps   // same as docker container ls
+
+#both result same
+docker ps -a -f name=suraj-sb-mysql -q 
+docker container ls -a -f name=suraj-sb-mysql -q 
+
+
+
+#to enter to running container
+docker exec -it <container_name> bash
+
+docker exec -it e7b7693e011c bash
+
+************************Docker Run vs Docker Exec *****************************************
+This is a fairly common question – but has a simple answer! 
+In short, docker run is the command you use to create a new container from an image, 
+whilst docker exec lets you run commands on an already running container!
+
+
+
+-----------------------------#build docker image
+
+docker build -t image-registry-name:image-tag-name .
+
+docker build -t local:springboot-mysql .
+
+docker build --no-cache
+
+
+--------------------------------# to remove docker image
+
+docker rmi -f c24de832ed9c
+
+--------------------------------# to run a docker image
+
+docker run -it <iamge_id>
+
+# specify network 
+
+docker run -it <image_id> --network host     			# other --network option is 'bridge'
+
+--------------------------------# docker networking 
+
+docker network ls
+
+sudo docker network inspect host
+
+
+
+docker inspect <container−id>
+
+docker network inspect host

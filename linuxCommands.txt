@@ -3,6 +3,14 @@ Linux Commands
 1) ln -s target  new-link-name
 
 
+#------------- to check disc space ---------------------
+
+> df -kh
+> du
+
+
+
+
 #----------------------------------------------------
 # to remove application / package installed.
 >
@@ -18,6 +26,15 @@ Usage: /etc/init.d/mysql start|stop|restart|reload|force-reload|status|bootstrap
 suraj@Suraj:~$ service mysql status
 > ps -ef |  grep process_name
 
+
+------------PROCESS related commands
+> pstree
+> ps -ef |  grep process_name
+> tree   # gives huge output.
+> ss
+
+
+
 #it will show process which is using port 8080.
 >fuser 8080/tcp  
 
@@ -25,6 +42,10 @@ suraj@Suraj:~$ service mysql status
 >grep -l "search string" filename...*ext
 >grep -c 'sometext' filename_dd_yy*
 
+
+------------------------------ user related operations --------------------------
+sudo useradd -m docker -g docker
+sudo usermod -a -G docker jenkins
 
 
 ------------Creating desktop Shortcut -------------------
@@ -52,16 +73,15 @@ sudo update-alternatives --config java
 ---> with command bash -x, we can see the shell expansion
 
 
+# to view linux service errors/logs
+
+journalctl -u jenkins
 
 
 
+--------------------------------------maven commands  -----------------------------------------------------
 
-
-
-
-
-
-
+mvn clean install -DskipTests=true 
 
 
 

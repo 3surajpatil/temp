@@ -24,3 +24,7 @@ bool(0):- False
 
 
 
+---------------------------------commands --------------------
+
+python -m SimpleHTTPServer 8000
+

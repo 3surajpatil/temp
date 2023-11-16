@@ -1,0 +1,167 @@
+References
+------------------------------------------------------------------------------------------------------------------------------------
+
+https://github.com/kodekloudhub/example-voting-app-kubernetes
+
+https://kubernetes.io/docs/tasks/tools/install-minikube/
+https://www.virtualbox.org/wiki/Downloads
+MiniKube Download page for  Windows: https://github.com/kubernetes/minikube/releases
+
+
+Install and set up the kubectl tool: -
+
+https://kubernetes.io/docs/tasks/tools/
+
+
+Install Minikube: -
+
+https://minikube.sigs.k8s.io/docs/start/
+
+
+Install VirtualBox: -
+
+https://www.virtualbox.org/wiki/Downloads
+
+https://www.virtualbox.org/wiki/Linux_Downloads
+
+
+Minikube Tutorial: -
+
+https://kubernetes.io/docs/tutorials/hello-minikube/
+
+If the minikube installation has been done on the macOS, then to access the URL on the local browser, we need to do a few steps to get the service URL to work. Those steps are covered on this documentation page: -
+
+https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+# kubernates installation.
+minikube
+kubeadam
+Microk8s
+
+
+kubectl get nodes
+
+kubectl run nginx --image=nginx
+
+
+kubectl apply -f pod-def.yaml
+
+kubectll create -f pod-def.yaml
+
+kubectl describe pod myapp-pod
+
+kubectl delete pod webapp
+
+kubectl run redis --image=redis123 --dry-run -o yaml
+
+
+kubectl get rs
+kubectl delete rs replicaset-1
+kubectl replace -f replicaset-definitina.yml
+kubectl scale -replicas=6 -f replicaset-definition.yaml
+kubectl edit rs new-replica-set   # opens deployment yaml
+kubectl describe replicaset myapp-replicaset
+
+kubectl scalereplicaset mysaqpp-rs --replicas=2
+kubectl edit replicaset myapp-repplica-set
+
+
+Deployments
+===============
+
+--> deployments create replicasets. 
+
+kubectl create deployment --help
+
+
+kubectl get replicaset
+kubectl get pods
+
+kubectl get all
+
+kubectl create deployment httpd-frontend --image=httpd:2.4-alpine --replicas=3
+
+
+
+
+# use create for first time deployments, although create and apply are same.
+kubectll create -f deployment-def.yaml
+
+#to get deploy ments
+kubectl get deployments    
+
+#to get deployment details
+kubectl describe deployment frontend      # or kubectl describe deployment/frontend
+
+# edit deployment 
+# just saving deployment file will deploy new changes.
+kubectl edit deployment frontend			# kubectl edit deployment/frontend   
+
+# to update deployemnt
+kubectl apply -f deployment-def.yaml
+or
+kubectl set image deployment/myapp-definition.yaml container-name=image-name:version
+kubectl set image deployment/myapp-definition.yaml nginx=nginx:1.9.1
+
+# status
+kubectl rollout status deployment/myapp-deployment
+kubectl rollout history deployment/myapp-deployment
+
+#rollback
+kubectl rollout undo deployment/myapp-deployment
+
+
+# edit deployment
+
+kubectl edit deployment myapp-deployment --record=true
+
+
+
+
+
+Service
+===============
+
+kubectl create -f service-definition.yaml
+
+kubectl get service
+kubectl get services
+
+minikube service myapp-service --url
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.MINIKUBE commands <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<,
+
+
+Basic Commands:
+  start            Starts a local Kubernetes cluster
+  status           Gets the status of a local Kubernetes cluster
+  stop             Stops a running local Kubernetes cluster
+  delete           Deletes a local Kubernetes cluster
+  dashboard        Access the Kubernetes dashboard running within the minikube cluster
+  pause            pause Kubernetes
+  unpause          unpause Kubernetes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
