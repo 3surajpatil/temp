@@ -14,7 +14,10 @@ Linux Commands
 #----------------------------------------------------
 # to remove application / package installed.
 >
-> sudo apt-get remove teams
+> sudo apt-get remove teams   # alternative is below.
+> dpkg -l package-name
+
+> sudo apt-get purge   # post delete it will delete all data.
 
 #------to check status of service -------------------
 >service mysql status  

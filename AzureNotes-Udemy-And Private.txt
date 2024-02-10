@@ -1,7 +1,7 @@
 
 
 ===========================AZ-104=============================================
->https://docs.microsoft.com/en-us/learn/certifications/exams/az-104 download exam skills outline :- on 26th march.
+>https://docs.microsoft.com/en-us/learn/certifications/exams/az-104 download exam skills outline 
 >https://portal.azure.com   
 
 suraj.srj.patil@gmail.com/suraj_p@123
@@ -33,7 +33,7 @@ can open from apps menu. look for power shell
 >Install-Module -Name Az -AllowClobber   type 'A' to allow all packages.
 >Get-InstalledModule -Name Az -AllVersions | Select-Object -Property Name,Version 
 >
---------------Manage Resource Groups--------------------
+========================================================Manage Resource Groups========================================================
 #resource group is way of organizing resources in a subscription .
 ->we can create resource group, resource group name should be unique across all regions.
 ->we can apply lock to resource group and make that rg read only. after that no users can delete or add resource and manke changes to that rg.
@@ -42,13 +42,24 @@ can open from apps menu. look for power shell
 
 https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_02b-Manage_Governance_via_Azure_Policy.md
 
---------------Manage Subscription And Governance.--------------------
+
+================================================== 104 ======Manage Identities and Governance in Az ========================================================
+
+
+> Tenant :- An Azure tenant is a single dedicated and trusted instance of Microsoft Entra ID. Each tenant (also called a directory) represents a single organization.
+			A tenant is automatically created when an organization signs up for a Microsoft cloud service subscription.
+> Azure subscription:- An Azure subscription is used to pay for Azure cloud services. Each subscription is joined to a single tenant. You can have multiple subscriptions.
+
+
+> security groups can be created and permissions can be given to security groups . so that we can add members to security groups.
+
+========================================================Manage Subscription And Governance========================================================
 
 
 -> Subscription is agreement with Microsoft to use Azure Services and how you are going to pay for that.
 -> we create one subscription for prod and another for dev/test.
 -> create one user by selecting domain name and then we can grant role as contributor, reader etc.
--> by creating user and adding role we grant access to some user to the resources.
+-> by creating user and adding role, we grant access to some user to the resources.
 
 -> policy :- we can create policy to apply some restrictions or standards for resources in az. like using managed disc for a vm. or to add tag for resources.
 -> policies can be created using cli.
@@ -59,11 +70,11 @@ https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/mas
 https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_02a_Manage_Subscriptions_and_RBAC.md
 
 
---------------Monitor Az Resources with Az Monitor.--------------------
+========================================================Monitor Az Resources with Az Monitor========================================================
 
 ->TO DO LATER
 
---------------Create and configure storage accounts----------------------------
+========================================================Create and configure storage accounts========================================================
 
 -> premium are the ssd, which have higher r/w rates.
 -> storage account can have unique name across azure.
@@ -81,7 +92,7 @@ https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/mas
 -> we can have multiple keys added so that if we had to refresh/regenerate the key the person / script that uses the first key doesen't get affected. we can use second
    key.
 
--> FileShares :- this type of storage we can mount in windows as shared disc.
+-> FileShares :- this type of storage we can mount in windows, linux as shared disc.
 -> Tables:- stores data in columns and rows.
 -> Queues:- FIFO type of messaging storage.
 
@@ -107,7 +118,7 @@ https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/mas
 -> Azure Files is feature that can be used to mount a storage to our vm. blobs cannot be mounted to vm's .
 -> Azure File Sync agent can be used to sync data to Azure Files. 
 
------------- Implement Backup And Recovery.------------
+======================================================== Implement Backup And Recovery========================================================
 
 -> option name :- backup and site recovery(Recovery service vault.)
 -> backup policy needs to be created which mentions about when to run backup.
@@ -125,7 +136,7 @@ https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/mas
 HANDSON LAB:- https://docs.microsoft.com/en-us/azure/virtual-machines/windows/tutorial-backup-vms
 
 
- ------------ Azure Virtual Machines ------------
+ ======================================================== Azure Virtual Machines ========================================================
  -> availability zones could be 1,2 or 3 so that we can keep identical machine in two different availablity zone.
  -> availablity set are for different fault domains it could be 1 or 2 or 3 domain. like fault domain:- network, power etc. and updates:- up to 20.
  -> Monitoring-> Diagnostic Settings. enabeling diagnostic setitngs will install addional app which stores cpu,memory and disc utilization to a storage account.
@@ -162,13 +173,13 @@ HANDSON LAB:- https://docs.microsoft.com/en-us/azure/virtual-machines/windows/tu
  
    
  ------------ Azure App Services------------
- -> App services are to deploy small scale website like app. we can subscrib eto app service and then create a web app.
+ -> App services are to deploy small scale website like app. we can subscribe to app service and then create a web app.
  -> scaleup is option to scale up the web app services to srever larger traffic.
  -> scaleout is option to set autoscale option configurations manually. insted of upgrading like scaleup directly.
  -> https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_09a-Implement_Web_Apps.md
  
  
- ------------ Azure Kubernetes Services------------
+ ======================================================== Azure Kubernetes Services========================================================
  -> https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_09c-Implement_Azure_Kubernetes_Service.md
 
 https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_09b-Implement_Azure_Container_Instances.md
@@ -181,7 +192,7 @@ Install Docker Desktop on Windows:
 
 https://docs.docker.com/docker-for-windows/install/
  
------------- Manage Virtual Networking------------ 
+======================================================== Manage Virtual Networking ======================================================== 
 
 -----------------network and subnet masking-------
 
@@ -219,16 +230,16 @@ https://docs.docker.com/docker-for-windows/install/
 
 -> HandsOn Lab:-  https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_04-Implement_Virtual_Networking.md
 
------------------Implement and manage virtual networking-----------------
+========================================================Implement and manage virtual networking========================================================
 
 -> peering allows us to connect two vm's with each other. we can also establish communication in cross subscription.
 -> peering can be done in between different region. also we have option to forward traffic between zones.
 
 
------------------Configure name resolution-----------------
+========================================================Configure name resolution========================================================
 -> DNS services.
 
------------------Secure access to virtual networks-----------------
+========================================================Secure access to virtual networks========================================================
 -> nsg (network security groups)
 -> all inbound and outbound traffic etc are managed here.
 -> vm's on same virtual network are allowed to communicate with each other.
@@ -238,7 +249,7 @@ https://docs.docker.com/docker-for-windows/install/
 -> https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_04-Implement_Virtual_Networking.md
 
 
------------------Configure load balancing-----------------
+========================================================Configure load balancing========================================================
 -> load balencers distribute traffic across different vm's .
 -> load balencer needs a public ip.
 -> backend pools are required to to add to load balencers. bakend pools can have vm's in them.
@@ -254,7 +265,7 @@ https://docs.docker.com/docker-for-windows/install/
 -> HandsOn Labs :-  https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_06-Implement_Network_Traffic_Management.md
 -> github.com/Azure
 
------------------Monitor and troubleshoot virtual networking-----------------
+========================================================Monitor and troubleshoot virtual networking========================================================
 -> Network Performance Monitor 
 -> network watcher :- it works at regional level.
 -> ip flow verify is to check connectivity between two ip's by specifying ip's and inbound or outbound traffic and port no.
@@ -263,6 +274,7 @@ https://docs.docker.com/docker-for-windows/install/
 -> how to pass az104 http://bit.ly/2PkFzRY
 -> https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/tree/master/Instructions/Labs
 -> https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_06-Implement_Network_Traffic_Management.md
+
 
 
 

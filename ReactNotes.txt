@@ -1,0 +1,25 @@
+
+refferences :- 
+========================
+https://www.codecademy.com/article/how-to-create-a-react-app
+
+
+
+#to create a react app 
+> npx create-react-app my-react-app --use-npm
+> cd my-react-app
+
+#starts development server.
+> cd my-react-app
+> npm start
+
+# builds app in to static files for production
+> npm run build
+
+# starts test runner.
+> npm test
+
+
+
+
+
