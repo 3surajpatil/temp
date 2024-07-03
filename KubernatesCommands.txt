@@ -8,32 +8,36 @@ https://www.virtualbox.org/wiki/Downloads
 MiniKube Download page for  Windows: https://github.com/kubernetes/minikube/releases
 
 
-Install and set up the kubectl tool: -
-
+#Install and set up the kubectl tool: -
 https://kubernetes.io/docs/tasks/tools/
 
 
-Install Minikube: -
-
+#Install Minikube: -  [IMP]
 https://minikube.sigs.k8s.io/docs/start/
 
 
-Install VirtualBox: -
-
-https://www.virtualbox.org/wiki/Downloads
-
-https://www.virtualbox.org/wiki/Linux_Downloads
-
-
-Minikube Tutorial: -
-
+#Minikube Tutorial: -
 https://kubernetes.io/docs/tutorials/hello-minikube/
 
-If the minikube installation has been done on the macOS, then to access the URL on the local browser, we need to do a few steps to get the service URL to work. Those steps are covered on this documentation page: -
+If the minikube installation has been done on the linux, then to access the URL on the local browser, we need to do a few steps to get the service URL to work. 
+Those steps are covered on this documentation page: -
 
 https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel
 
+
+
+
+
+#Install VirtualBox: -
+https://www.virtualbox.org/wiki/Downloads
+https://www.virtualbox.org/wiki/Linux_Downloads
+
+
+
+
 ------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 
@@ -43,19 +47,56 @@ kubeadam
 Microk8s
 
 
-kubectl get nodes
+
+
+-------------------------------------------------------- minikube commands ----------------------------------------------------------------------------
+
+#start minikube
+#minikube start 
+#minikube start --cpus 6 --memory 20g --disk-size=50g
+minikube start --vm-driver=virtualbox  #other optoins := virtualbox, ssh , docker driver
+
+
+
+#Pause Kubernetes without impacting deployed applications:
+minikube pause
+
+#Unpause a paused instance:
+minikube unpause
+
+#Halt the cluster:
+minikube stop
+
+#Change the default memory limit (requires a restart):
+minikube config set memory 9001
+
+#Browse the catalog of easily installed Kubernetes services:
+minikube addons list
+
+#Create a second cluster running an older Kubernetes release:
+minikube start -p aged --kubernetes-version=v1.16.1
+
+#Delete all of the minikube clusters:
+minikube delete --all
+
+
+
+
+
+
+minikube start 
+kubectl get namespaces
+kubectl create namespace devns
+kubectl get pods --all-namespaces -o wide
+kubectl get nodes -o wide
+
+
 
 kubectl run nginx --image=nginx
-
-
 kubectl apply -f pod-def.yaml
-
 kubectll create -f pod-def.yaml
-
 kubectl describe pod myapp-pod
-
 kubectl delete pod webapp
-
 kubectl run redis --image=redis123 --dry-run -o yaml
 
 

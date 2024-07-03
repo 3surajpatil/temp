@@ -49,6 +49,10 @@ sudo systemctl start your-service.service
 #To check the status of your service
 sudo systemctl status example.service
 
+#Stop your service
+sudo systemctl stop your-service.service
+
+
 #To enable your service on every reboot
 sudo systemctl enable example.service
 

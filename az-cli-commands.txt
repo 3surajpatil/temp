@@ -3,6 +3,9 @@
 >az find "az vm"
 >az find "az vm create"
 
+> az vm create --resource-group myResourceGroupAutomate --name myAutomatedVM --image Ubuntu2204 --admin-username azureuser --generate-ssh-keys --custom-data cloud-init.txt
+> az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAutomatedVM
+
 #If you already know the name of the command you want, the --help argument for that command will get you more detailed information on the command,
 az storage blob --help
 
@@ -54,7 +57,10 @@ az deployment group create \
 
 
 
+==================================az static web app =======================================
 
+
+az find "az static web app"
 
 
 

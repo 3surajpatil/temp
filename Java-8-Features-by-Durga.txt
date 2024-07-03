@@ -1,0 +1,526 @@
+#refference :- youtube : Durgasoft solutions Java 8 New Features: Introduction 
+
+-> java-8 enabled functional programming.
+
+=====================================
+Lambda Expressions.
+=====================================
+1) lambda expressions brought functional programming feature to java.
+2) lambda expression is also called ananymous function.
+3) anonymous function is a function with no return type, modifiers,and without name.
+4) below are some examples of how to define lambda expression/functions..
+
+e.g.1 
+-----------------------------
+public void m1()
+{
+	Sysout("hello world..!")
+}
+
+lambda expression 
+
+()->{ Sysout("hello world..!") }
+()->Sysout("hello world..!")   // curly braces are also optional when code not more than 1 line.
+
+
+e.g.2
+-------------------------
+
+public void m1(int a,int b)
+{
+	sysout(a+b)
+}
+
+(int a,int b)->{ sysout(a+b) } or
+(int a,int b)-> sysout(a+b)  or
+(a,b) -> sysout(a+b)
+
+e.g.3
+-------------------------
+
+public int squareIt(int n)
+{
+	return n*n;
+}
+
+(int n) -> {return n*n;} or // here return is required.
+(int n) -> return n*n;  // here return is required.or  
+(int n) -> n*n;  // here return is not required. 
+(n) -> n*n; // or
+n->n*n;   // if only one param , paranthesis is also optional.
+
+
+e.g. 4
+-------------------------
+public int m1(String s1)
+{
+	return s1.length();
+}
+
+
+(s) -> s.length();
+
+5) to call these lambda expressions we use FI(functional interface.)
+6) FI :- are interface with one and  only one abstract method.
+7) Functional interface can have static and default methods.
+
+=====================================
+Functional Interface.
+=====================================
+
+8) we declare @FunctionalInterface annotation above the interface.
+
+@FunctionalInterface
+interface A
+{
+	public void m1();
+
+}
+
+@FunctionalInterface 
+interface B extends A
+{
+	public void m1();  //overridden method in B. if we don't declare this method then also it is inherited from A interface.
+	public void m2();	// it is abstract method in Interface B. so functional interface can have only 1 abstract method so we need to remove @FunctionalInterface annotation form top.	
+}
+
+# how to call lambda expression 
+
+e.g. 2
+--------------------
+@FunctionalInterface
+interface A
+{
+	public void m1();
+
+}
+
+Class B implements A
+{
+	public void m1()
+	{
+		sysout("hello world..!");
+	}	
+}
+
+Class Test
+{
+	psvm(---)
+	{
+		B b=new B();
+		b.m1();
+		
+		//or 
+		
+		A a=new B();
+		a.m1();
+		
+		//or lambda expression will be like  
+		
+		A a= ()-> Sysout("hello world...!");
+		
+	}
+
+}
+
+
+9) so from above point it concludes like we use lambda expression along with functional interface.
+10) lambda expression used in multithreading 
+
+
+
+//Threading example old style...
+package test;
+
+class ChildThreadClass implements Runnable
+{
+		public void run()
+		{
+			for(int i=0;i<10;i++)
+			{
+				System.out.println("ChildThread:- "+i);
+			}
+		}
+}
+
+public class LambdaThreadExample {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Runnable r=new ChildThreadClass();
+		
+		Thread t=new Thread(r);
+		t.start();
+					
+		for(int i=0;i<10;i++)
+		{
+			try
+			{
+				Thread.currentThread().sleep(1000);
+			}
+			catch(Exception e)
+			{
+				System.out.println("MainThread :- interrupted my sleep...!");
+			}
+			System.out.println("MainThread:- "+i);
+		}
+	}
+}
+
+//Threading example java8 style...
+
+
+
+public class LambdaThreadExample {
+
+	public static void main(String[] args) {
+
+		// TODO Auto-generated method stub
+		
+		// old style 
+		//Runnable r=new ChildThreadClass();
+		
+		Runnable r=()->{
+			
+			for(int i=0;i<10;i++)
+			{
+				
+				try
+				{
+					Thread.currentThread().sleep(1000);
+				}
+				catch(Exception e)
+				{
+					System.out.println("interrupted my sleep...!");
+				}
+				
+				System.out.println("ChildThread:- "+i);
+			}			
+		};
+		
+		
+		Thread t=new Thread(r);
+		t.start();
+					
+		for(int i=0;i<10;i++)
+		{
+			
+			System.out.println("MainThread:- "+i);
+		}
+	}
+}
+
+11) lambda expressions used in Comparator to sort a collection.
+
+package test;
+
+import java.util.*;
+
+
+public class LambdaCollectionSortExample {
+
+	public static void main(String[] args) {
+		
+		ArrayList<Integer> al=new ArrayList<Integer>();
+		
+		al.add(60);al.add(20);al.add(40);al.add(30);al.add(50);		
+		
+		System.out.println("list as is :- "+al.toString());
+		
+		Comparator<Integer> comparatorObj=(input1,input2)->
+			
+				//before uncommenting below add curly braces.
+				/*if(input1<input2)
+				{
+					return -1;
+				}
+				else if(input1>input2)
+				{
+					return 1;					
+				}
+				else
+				{
+					return 0;
+				}*/
+			//if we write below line curly braces removed.from this lambda
+			//ascending order.
+			//(input1<input2)?-1:(input1>input2)?1:0;
+			(input1>input2)?-1:(input1<input2)?1:0;
+			
+			Collections.sort(al,comparatorObj);
+			System.out.println("sorted list is :- "+al.toString());
+	}	
+}
+
+
+
+=====================================
+Lambda vs Annonymous Inner Classes.
+=====================================
+1) Annonymous inner classed can be replaced by Lambdas only when there is only one abstract method in that Anonymous inner class..
+2) Annonymous inner class are more powerful because consider an interface where we have more that 1 method, there we cannot create lambda expr.
+
+e.g.
+-----------
+
+interface A
+{
+	public void m1();
+	public void m2();		
+}
+
+//annonymous innter class.
+A a=new A()
+{
+	public void m1()
+	{
+		Sysout("m1");
+	}
+	
+	public void m2()
+	{
+		Sysout("m2");
+	}
+
+}
+
+
+a.m1()
+a.m2()
+
+e.g. 2
+-----------
+//annonymous inner class.
+Runnable r=new Runnable(){
+	public void run()
+	{
+	
+		sysout("child thread from annonymous inner class.")
+	}
+}
+
+//lambda expression for same.
+
+Runnable r=()->sysout("child thread from annonymous inner class.")
+
+
+
+
+==========================================================================
+Default Methods. / Virtual Extension Method / Defender Method.
+==========================================================================
+
+1) Default methods are added to java8 so that we can extend functionality of existing interface by adding some additional methods to it.
+2) if we try to add new methods to existing interfaces in java7, then all the implementation classes of java-7 would fail compiling since those classes are old and 
+	are not aware of new methods.
+3) such new methods added to existing interfaces are declared with default 	keyword and it's implementation.
+4) default keyword we write at method declaration in interface only. overridden methods we don't declare default.
+5) Object class methods are not allowed to be made default in interface. because Object is already superclass for all java classes. 
+6) in cases where there is conflict between interfaces , if both interfaces have definition of same method then there would be multiple inheritance case.
+in such cases we need to override that conflicting method and from that call whichever interface method we want to call.
+
+==========================================================================
+Static Methods in interface.
+==========================================================================
+1) static methods are allowed in java8 to be defined in interface. it is due to for just static methods class are so expensive.
+2) static interface methods would be only called wrt interfaceName.methodName(); wrt implementation class name we would not be able to call.
+3) static methods are not available to implementation classes by default. hence we need to call with interfacename itself. InterfaceName.staticMethodName();
+
+
+
+==========================================================================
+Predicate: interface.
+==========================================================================
+1) predicates are part of java.util.function.
+2) we can create lambda expressions for condition checking logic  which returns boolean to make consise code.
+3) by default return type of predicate is always boolean.
+
+
+e.g. 
+-------
+Predicate<String> p=s->s.length()>5;
+Predicate<Integer> p=i->i%2==0;
+Predicate<Employee> result=e->e.getSalary()>10000 && e.getLocation().equals("pune");
+
+
+e.g.
+-----
+
+import java.util.function.Predicate;
+
+public class PredicateTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String[] nameArray={"Nag","Chiranjeevi","Venkatesh","Balaiah","sunny","Katrina"};
+		Predicate<String> p=s->s.length()>5;
+		
+		for(String s:nameArray)
+		{
+			
+			if(p.test(s))
+				System.out.println(s);			
+			
+		}
+		
+
+	}
+
+}
+
+4) and,or are the predicate joining methods.
+5) negate is to get negatinve result of a predicate.
+
+
+
+
+
+==========================================================================
+Function: interface.
+==========================================================================
+1) if result required is boolean then we use predicate interface.
+2) if result is other than boolean then we create Function interface object and provide input type in generic symbol.
+
+==========================================================================
+Consumer: interface.
+==========================================================================
+
+==========================================================================
+Supplier: interface.
+==========================================================================
+
+==========================================================================
+BiPredicate,BiFunction,BiConsumer
+==========================================================================
+Primitive Predicate Types.
+---------------------------
+IntPredicate,DoublePredicate,LongPredicate.
+
+Primitive Function Types.
+---------------------------
+
+IntFunction, DoubleFunction,LongFunction IntToDoubleFunction,IntToLongFunction etc...
+
+
+Primitive Consumer Types.
+---------------------------
+IntConsumer,DoubleConsumer,LongConsumer
+		acceptAsInt()
+		
+Primitive Supplier Types.
+---------------------------		
+
+BooleanSupplier,IntSupplier,LongSupplier,DoubleSupplier
+		getAsDouble()
+
+		
+
+
+IntBinaryOperator,LongBinaryOperator,DoubleBinaryOperator
+
+IntUnaryOperator,
+
+
+==========================================================================
+Method and Constructor Reference
+==========================================================================
+
+1) both serve purpose of code reusability.
+
+
+Method Reference
+-----------------
+1) Functional Interface object can be assigned to already exisitng specified Method with :: operator is Method referance.
+	both Static and Instance method are allowed to be called with reference symbol ::
+	
+	Static Method can be called wrt classname Test::m1();
+	
+	Instance Method can be called wrt instance t::m1();
+	e.g. Test t=new Test();
+
+2) in method reference , arguments passed must match.
+3) Method Reference is alternative to lambda expression.
+
+
+Constructor Reference
+----------------------
+
+1)ClassName:new  e.g.  Test:: new    --------> this is constructor referance.
+
+
+==========================================================================
+Streams:- java.util.stream pkg
+==========================================================================
+
+Collection :- if we want to represent group of objects as a single entity we use colleciton. or we collect multiple objects of same or differenct types in collection.
+if we want to process objects from a collection, we create stream.
+
+Stream s=c.stream();
+filter(Predicate)
+map(Function)
+count()
+sorted()  // natural sorting order
+sorted(Comparator)
+min()
+max()
+forEach(Function)
+ toArray() :- this converts stream of objects to array.
+ 
+1) filter returns existing elements filtered.
+2) map returns new objects for existing collection.
+3) streams are not only applicable for collections,wherever group of values are there, you can go for streams. 
+
+
+
+
+==========================================================================
+Date and Time  joda time api
+==========================================================================
+
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+		LocalDate ld=LocalDate.now();		
+		System.out.println("local date is :- "+ld);
+		LocalTime lt=LocalTime.now();
+		System.out.println("local time is :- "+lt);
+
+we have other classes as
+
+LocalDateTime
+Period
+Year
+ZoneId
+ZonedDateTime	
+
+
+==========================================================================
+Optional class
+==========================================================================
+
+1) Optional is helpful to avoid null values.
+
+String input="hellow world..";
+		
+		Optional<String> optional =Optional.ofNullable(input);
+		
+		System.out.println("is present "+optional.isPresent());
+		System.out.println("optional.get():- "+optional.get());   // throuws NoSuchElementException.
+		System.out.println("optional.orElse"+optional.orElse( "input value is empty..!"));
+		//optional.orElseGet(s()->"input is empty");
+
+		//Supplier<String> s=()->"valueNotPresent";
+		
+
+
+
+
+
+
+
+
+
+

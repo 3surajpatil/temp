@@ -22,4 +22,4 @@ https://www.codecademy.com/article/how-to-create-a-react-app
 
 
 
-
+ /* {data ? <div>{JSON.stringify(data)}</div> : <div>Loading...</div>} */

@@ -3,7 +3,9 @@ Java 8 Lambda Expressions
 
 Reference :- http://www.java2novice.com/java-8/lambda-expression/
 
----> Lambda expression is an anonymous function with out any declarations.
+---> Lambda expression is an anonymous function without any declarations.
+
+---> A lambda expression is an instance of a functional interface
 
 ---> Syntax :- (arguments) -> {body}
 
@@ -23,8 +25,6 @@ e.g. 2) (int i, int j) -> {
 		}
 
 --> in body if you don't specify return type , void will be default return type.
-
----> A lambda expression is an instance of a functional interface
 
 Q) What is Functional Interface ?
 

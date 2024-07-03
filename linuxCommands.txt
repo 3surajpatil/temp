@@ -3,6 +3,16 @@ Linux Commands
 1) ln -s target  new-link-name
 
 
+
+# to set pathof software in root.
+vi /etc/environment
+source /etc/environment
+
+# to set path of software for current user.
+vi ~/.bashrc
+source /home/suraj/.bashrc
+
+
 #------------- to check disc space ---------------------
 
 > df -kh
@@ -54,7 +64,8 @@ sudo usermod -a -G docker jenkins
 ------------Creating desktop Shortcut -------------------
 
 >add your installation directory to /opt/{application-directory}
->create 1 application entry in /usr/applications/{application-name}.desktop
+>create 1 application entry in /usr/applications/{application-name}.desktop   
+> # or /usr/share/applications/
 > 
 > or if above location not found check >  /usr/share/applications  e.g. /usr/share/applications/Eclipse.desktop
 
