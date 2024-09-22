@@ -4,7 +4,7 @@ References
 https://github.com/kodekloudhub/example-voting-app-kubernetes
 
 https://kubernetes.io/docs/tasks/tools/install-minikube/
-https://www.virtualbox.org/wiki/Downloads
+#https://www.virtualbox.org/wiki/Downloads   (looks like not mandatory. minikube works fine)
 MiniKube Download page for  Windows: https://github.com/kubernetes/minikube/releases
 
 
@@ -42,9 +42,9 @@ https://www.virtualbox.org/wiki/Linux_Downloads
 
 
 # kubernates installation.
-minikube
-kubeadam
-Microk8s
+minikube  # below apps are alternatives of minikube.
+#kubeadam
+#Microk8s
 
 
 
@@ -84,13 +84,6 @@ minikube delete --all
 
 
 
-minikube start 
-kubectl get namespaces
-kubectl create namespace devns
-kubectl get pods --all-namespaces -o wide
-kubectl get nodes -o wide
-
-
 
 kubectl run nginx --image=nginx
 kubectl apply -f pod-def.yaml
@@ -107,7 +100,7 @@ kubectl scale -replicas=6 -f replicaset-definition.yaml
 kubectl edit rs new-replica-set   # opens deployment yaml
 kubectl describe replicaset myapp-replicaset
 
-kubectl scalereplicaset mysaqpp-rs --replicas=2
+kubectl scale replicaset mysaqpp-rs --replicas=2
 kubectl edit replicaset myapp-repplica-set
 
 
@@ -168,9 +161,9 @@ Service
 ===============
 
 kubectl create -f service-definition.yaml
-
-kubectl get service
-kubectl get services
+kubectl apply -f service-def.yaml
+kubectl get service servicename-service -n namespace
+kubectl get services -n namespace
 
 minikube service myapp-service --url
 
@@ -178,6 +171,7 @@ minikube service myapp-service --url
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.MINIKUBE commands <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<,
 
+>minikube start 
 
 Basic Commands:
   start            Starts a local Kubernetes cluster
@@ -190,17 +184,69 @@ Basic Commands:
 
 
 
+minikube start 
+kubectl get namespaces
+kubectl create namespace devns
+kubectl describe namespace devns
+
+kubectl get pods --all-namespaces -o wide
+kubectl get nodes -o wide
+minikube stop
+
+minikube dashboard
 
 
 
 
 
+==============================================Kubernates Monitoring Commands =============================================
+
+
+kubectl top pod: Displays the memory usage of a pod. 
+kubectl top pod --containers: Displays the CPU and memory usage for each container in a pod. 
+kubectl get resourcequota mem-cpu-demo: Shows the quota and how much of it has been used. 
+kubectl exec -it podname -- sh: Enters an interactive session to print the current memory usage. 
+cat /sys/fs/cgroup/memory/memory.usage_in_bytes: Prints the current memory usage. 
 
 
 
+---------------------------- Creating pod for SpringBootDemo application ---------------------------------------------------------------------------------------------------
+# in a new terminal 
+minikube start
+
+cd /home/suraj/workload/eclipse-workspaces/STStestworkspace/Spring-Boot-Demo/
+
+docker build -t springbootdemo:latest .
+
+#load your image to minikube.
+minikube image load springbootdemo:latest
+minikube image ls
+
+docker run -itd  --network host springbootdemo
+
+# alternative to above.
+#docker run -itd -p 8080:8080 springbootdemo
+
+docker logs 0dcc5b04f772
+
+https://kubernetes.io/docs/concepts/workloads/pods/
 
 
+Pods 
+------
 
+---> A Pod is similar to a set of containers with shared namespaces and shared filesystem volumes.
+---> Restarting a container in a Pod should not be confused with restarting a Pod. A Pod is not a process, but an environment for running container(s). A Pod persists until it is deleted.
+
+
+kubectl apply -f pod.yaml -n devns
+
+#on minikube dashboard, first time you will get error while pulling image.
+
+# if some issue comes while creating pod, delete pod changed whatever required in pod.yaml and then re-create pod by kubectl apply ...
+
+kubectl get pods -n devns -o wide
+kubectl delete pod sbdjar -n devns
 
 
 

@@ -26,5 +26,33 @@ bool(0):- False
 
 ---------------------------------commands --------------------
 
+pip install pipdeptree
+python3 -m  pipdeptree
+python3 -m  pipdeptree --freeze
+
+pip show Flask
+
 python -m SimpleHTTPServer 8000
 
+python3 -m venv venv
+source venv/bin/activate
+
+
+
+pip install -r requirements.txt 
+
+
+pip uninstall Flask
+pip freeze    ---> run in venv.it will list dependencies.
+
+
+
+Flask-Cors==4.0.1
+Flask==3.0.3
+blinker==1.8.2
+click==8.1.7
+itsdangerous==2.2.0
+Jinja2==3.1.4
+MarkupSafe==2.1.5
+Werkzeug==3.0.3
+MarkupSafe==2.1.5

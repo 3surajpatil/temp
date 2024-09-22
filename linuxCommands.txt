@@ -93,6 +93,15 @@ journalctl -u jenkins
 
 
 
+
+
+--------------------------docker ------------
+docker rm container_id
+docker rmi image_id
+
+docker rmi b68796b9ffa3
+docker rmi -f b68796b9ffa3
+
 --------------------------------------maven commands  -----------------------------------------------------
 
 mvn clean install -DskipTests=true 

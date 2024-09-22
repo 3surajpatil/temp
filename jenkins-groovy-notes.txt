@@ -11,3 +11,22 @@ groovy scripts can be of two type
 
 2) declarative pipeline has more benifits than scripted pipeline, like looping, skipping one stage 
 
+
+
+
+
+
+
+
+
+---------------------------------- run pipeline on github pull request. ------------------------------
+
+
+
+ plugin  :- github pull request builder. 
+
+
+# download codeql cli
+https://github.com/github/codeql-cli-binaries/releases
+
+https://github.com/github/codeql-cli-binaries/releases/download/v2.17.5/codeql-linux64.zip
