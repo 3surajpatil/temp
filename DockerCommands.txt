@@ -10,6 +10,7 @@ mvn package -DskipTests=true
 docker rmi -f local:springboot-mysql
 
 docker build -t local:springboot-mysql .
+docker build . -t flask-app2
 
 #this will run  docker iamge on local network so that local mysql will be accesible to spring boot application.
 docker run -it  --network host bb7fe66b131b
@@ -95,3 +96,5 @@ sudo docker network inspect host
 docker inspect <container−id>
 
 docker network inspect host
+
+

@@ -1,0 +1,10 @@
+
+
+
+Creating a Kubernates Cluster with Virtual Box.
+=================================================
+
+
+1) enable your HyperV setitng on windows.   : -start vm from HyperV  suraj/coolpass.
+2) install docker for windows.
+

@@ -11,8 +11,8 @@ select * from employee;
 
 commit;
 
-  SELECT * FROM nifty200 WHERE TRADE_DATE='2023-09-13';
-  -- delete from nifty200 WHERE TRADE_DATE='2023-09-13';
+SELECT * FROM nifty200 WHERE TRADE_DATE='2023-09-13';
+-- delete from nifty200 WHERE TRADE_DATE='2023-09-13';
 
 select * from nifty200 limit 1;
 select * from nifty200 where symbol='TECHM' AND trade_date='2023-08-21' LIMIT 1;
@@ -27,6 +27,21 @@ order by trade_date desc;
 
 select count(*) from nifty200;
 
+SET SQL_SAFE_UPDATES = 0;
+
+SELECT * FROM app_db.user;
+insert into user values(1,'Suraj');
+insert into user values(2,'Suresh');
+insert into user values(3,'Sujit');
+
+delete from user where username='Suresh';
+
+SELECT * FROM user where id=1;
+
+
+
+select * from world.city;
+select * from world.country;
 
 
 
