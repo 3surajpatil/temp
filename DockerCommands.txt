@@ -98,3 +98,47 @@ docker inspect <container−id>
 docker network inspect host
 
 
+
+
+
+Questions
+-----------
+
+Beginner Level:
+----------------------
+Q) What is Docker and how does it work?
+Q) Explain the difference between a Docker image and a Docker container.
+Q) What is a Dockerfile and what is its purpose?
+Q) What are the key components of Docker architecture?
+Q) How does Docker differ from a virtual machine?
+Q) What are Docker volumes and why are they used?
+Q) Explain Docker Hub and its role.
+Q) Basic Docker commands: docker run, docker ps, docker stop, docker rm, docker build, docker pull, docker push.
+
+Intermediate Level:
+----------------------
+
+Q) What is Docker Compose and how is it used for multi-container applications?
+Q) Explain Docker networking concepts (bridge, host, overlay networks).
+Q) What are Docker namespaces and cgroups, and how do they provide isolation?
+Q) Describe the lifecycle of a Docker container.
+Q) Explain multi-stage Docker builds.
+Q) How do you manage data persistence in Docker?
+Q) What is the difference between COPY and ADD in a Dockerfile? 
+ 
+Advanced Level:
+----------------------
+Q) Explain Docker Swarm and its features (e.g., Routing Mesh, high availability).
+Q) How does Docker ensure image immutability?
+Q) Discuss Docker security best practices.
+Q) How would you set up a CI/CD pipeline with Docker? 
+Q) Explain the concept of "Docker in Docker" (DinD) and its use cases. 
+Q) How do you monitor Docker containers in a production environment? 
+Q) What are Docker secrets and how are they used for sensitive data?
+Q) Scenario-based questions: e.g., "How would you troubleshoot a Docker container failing to start?" or "How would you scale a multi-service application using Docker?"
+
+Additional Considerations:
+-----------------------
+Docker and Kubernetes: Questions about the relationship between Docker and Kubernetes, their differences, and when to use each.
+Cloud Integration: How Docker integrates with various cloud platforms.
+Real-world experience: Be prepared to discuss your experience using Docker in projects and how you've solved challenges.

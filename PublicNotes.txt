@@ -5,4 +5,9 @@ https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-dev-start-howto-vm
 https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-dev-start-howto-deploy-linux?view=azs-2008
  
  
- 
+
+Docker Image:
+A Docker image is a lightweight, standalone, and executable software package that includes everything needed to run an application. 
+This encompasses the code, a runtime, system tools, libraries, and settings. Images are built from a Dockerfile, which is a text file containing instructions for creating the image. Images are read-only templates and can be thought of as a blueprint or a snapshot of an application's environment at a specific point in time. They are immutable, meaning once created, they cannot be modified. Any changes require creating a new image. 
+Docker Container:
+A Docker container is a running instance of a Docker image. When you "run" a Docker image, you are essentially creating a container. Containers are isolated, self-contained environments where your application runs. They utilize the host operating system's kernel but provide their own isolated file system, network interfaces, and processes. Containers are dynamic and can be started, stopped, paused, and deleted. Multiple containers can be created from a single image, each running independently with its own state and resources.  
